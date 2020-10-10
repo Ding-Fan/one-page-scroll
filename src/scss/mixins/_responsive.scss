@@ -1,0 +1,19 @@
+// https://dev.to/paul_duvall/sass-and-media-queries-hb2
+// This mixin creates the media queries allowing for the design to be responsive on smaller screens
+@mixin respond($breakpoint) {
+  @if $breakpoint == large {
+    @media (max-width: 1600px) {
+      @content;
+    }
+  }
+  @if $breakpoint == medium {
+    @media (max-width: 1000px) {
+      @content;
+    }
+  }
+  @if $breakpoint == small {
+    @media (max-width: 700px) {
+      @content;
+    }
+  }
+}

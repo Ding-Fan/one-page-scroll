@@ -1,0 +1,94 @@
+// https://sass-lang.com/documentation/at-rules/use
+// Sass team discourages @import
+@import "./mixins/responsive";
+
+$ding-dark: #404040;
+$byakugun: #78c2c4;
+
+html {
+  background-color: $ding-dark;
+  color: $byakugun;
+  @include respond(large) {
+    font-size: 150px;
+  }
+  @include respond(medium) {
+    font-size: 100px;
+  }
+  @include respond(small) {
+    font-size: 50px;
+  }
+}
+
+.container {
+  font-size: 40px;
+
+  .picture-slot {
+    position: fixed;
+    z-index: 1;
+    width: 100vw;
+    height: 0;
+    background-color: $ding-dark;
+    filter: opacity(55%);
+
+    img {
+      transition: all 0.4s;
+      width: 100vw;
+
+      @include respond(small) {
+        width: auto;
+        height: 50vh;
+      }
+
+      &.vanish {
+        opacity: 0;
+      }
+    }
+
+    .edge-shade {
+      position: relative;
+      height: 1.5rem;
+      margin-top: -1.5rem;
+      @include respond(small) {
+        height: 20vh;
+        margin-top: -20vh;
+      }
+      background-image: linear-gradient(to bottom, transparent, $ding-dark);
+    }
+  }
+
+  // @keyframes fade-out-and-in {
+  //   0% {
+  //     opacity: 1;
+  //   }
+
+  //   50% {
+  //     opacity: 0;
+  //   }
+
+  //   100% {
+  //     opacity: 1;
+  //   }
+  // }
+
+  .block {
+    z-index: 2;
+    position: relative;
+    padding: 1px;
+
+    &.one {
+      text-align: center;
+      height: 111vh;
+    }
+
+    &.two {
+      height: 133vh;
+      text-align: center;
+    }
+    &.haha {
+      background-color: #a23;
+    }
+    &.three {
+      height: 123vh;
+    }
+  }
+}
