@@ -1,26 +1,73 @@
 // https://sass-lang.com/documentation/at-rules/use
 // Sass team discourages @import
-@import "./mixins/responsive";
+// https://eduardoboucas.github.io/include-media/
+@import "include-media/dist/include-media";
 
 $ding-dark: #404040;
 $byakugun: #78c2c4;
+$breakpoints: (
+  phone: 700px,
+  tablet: 1000px,
+  desktop: 1600px,
+);
 
 html {
   background-color: $ding-dark;
   color: $byakugun;
-  @include respond(large) {
-    font-size: 150px;
-  }
-  @include respond(medium) {
-    font-size: 100px;
-  }
-  @include respond(small) {
+
+  @include media(">desktop") {
     font-size: 50px;
+  }
+  @include media(">tablet", "<=desktop") {
+    font-size: 40px;
+  }
+  @include media(">phone", "<=tablet") {
+    font-size: 30px;
+  }
+  @include media("<=phone") {
+    font-size: 20px;
   }
 }
 
 .container {
-  font-size: 40px;
+  .top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    width: 100%;
+    .website-info {
+      @include media(">desktop") {
+        height: 2rem;
+        line-height: 1rem;
+        margin-left: 2rem;
+      }
+      @include media(">tablet", "<=desktop") {
+        font-size: 50px;
+      }
+      @include media(">phone", "<=tablet") {
+        font-size: 40px;
+      }
+      @include media("<=phone") {
+        font-size: 30px;
+      }
+
+      display: flex;
+      align-items: center;
+
+      .logo {
+      }
+      .description {
+      }
+    }
+    .music-player {
+      margin-right: 2rem;
+    }
+  }
 
   .picture-slot {
     position: fixed;
@@ -34,7 +81,7 @@ html {
       transition: all 0.4s;
       width: 100vw;
 
-      @include respond(small) {
+      @include media(">phone", "<=tablet") {
         width: auto;
         height: 50vh;
       }
@@ -48,7 +95,7 @@ html {
       position: relative;
       height: 1.5rem;
       margin-top: -1.5rem;
-      @include respond(small) {
+      @include media(">phone", "<=tablet") {
         height: 20vh;
         margin-top: -20vh;
       }
@@ -75,9 +122,48 @@ html {
     position: relative;
     padding: 1px;
 
-    &.one {
+    &.cover {
       text-align: center;
-      height: 111vh;
+
+      .picture {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          @include media(">desktop") {
+            width: 40vw;
+          }
+          @include media(">tablet", "<=desktop") {
+            width: 50vw;
+          }
+          @include media(">phone", "<=tablet") {
+            width: 60vw;
+          }
+          @include media("<=phone") {
+            width: 70vw;
+          }
+        }
+      }
+      .description {
+        @include media(">desktop") {
+          height: 2rem;
+          margin-top: -2rem;
+        }
+        @include media(">tablet", "<=desktop") {
+          height: 3rem;
+          margin-top: -3rem;
+        }
+        @include media(">phone", "<=tablet") {
+          height: 4rem;
+          margin-top: -4rem;
+        }
+        @include media("<=phone") {
+          height: 5rem;
+          margin-top: -5rem;
+        }
+      }
     }
 
     &.two {
