@@ -16,10 +16,6 @@ html {
   background-color: $ding-dark;
   color: $byakugun;
 
-  width: 100vw;
-  height: 100vh;
-  overflow: scroll;
-
   @include media(">desktop") {
     font-size: 50px;
   }

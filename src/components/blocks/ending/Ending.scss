@@ -10,6 +10,22 @@
   }
   .buttons {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    @include media(">desktop") {
+      font-size: 50px;
+    }
+    @include media(">tablet", "<=desktop") {
+      font-size: 40px;
+    }
+    @include media(">phone", "<=tablet") {
+      font-size: 30px;
+    }
+    @include media("<=phone") {
+      flex-direction: column;
+      align-items: center;
+    }
   }
   .footer {
     display: flex;
