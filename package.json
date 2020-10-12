@@ -16,7 +16,10 @@
     "sass": "^1.27.0"
   },
   "dependencies": {
-    "aos": "^3.0.0-beta.6",
-    "include-media": "^1.4.9"
+    "@terwanerik/scrolltrigger": "^1.0.5",
+    "aos": "^2.3.4",
+    "include-media": "^1.4.9",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   }
 }

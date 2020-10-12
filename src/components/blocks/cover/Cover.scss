@@ -1,0 +1,43 @@
+.cover {
+  text-align: center;
+
+  .picture {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      @include media(">desktop") {
+        width: 40vw;
+      }
+      @include media(">tablet", "<=desktop") {
+        width: 50vw;
+      }
+      @include media(">phone", "<=tablet") {
+        width: 60vw;
+      }
+      @include media("<=phone") {
+        width: 70vw;
+      }
+    }
+  }
+  .description {
+    @include media(">desktop") {
+      height: 2rem;
+      margin-top: -2rem;
+    }
+    @include media(">tablet", "<=desktop") {
+      height: 3rem;
+      margin-top: -3rem;
+    }
+    @include media(">phone", "<=tablet") {
+      height: 4rem;
+      margin-top: -4rem;
+    }
+    @include media("<=phone") {
+      height: 5rem;
+      margin-top: -5rem;
+    }
+  }
+}

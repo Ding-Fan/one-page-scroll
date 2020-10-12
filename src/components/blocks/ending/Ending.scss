@@ -1,0 +1,24 @@
+.ending {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .title {
+  }
+  .text {
+    text-align: center;
+  }
+  .buttons {
+    display: flex;
+  }
+  .footer {
+    display: flex;
+    align-items: center;
+    .qr-code {
+      margin-right: 1rem;
+      img {
+        width: 130px;
+      }
+    }
+  }
+}

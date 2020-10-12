@@ -1,0 +1,65 @@
+$ding-dark: #000;
+$byakugun: #78c2c4;
+$breakpoints: (
+  phone: 700px,
+  tablet: 1000px,
+  desktop: 1600px,
+);
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: $ding-dark;
+  color: $byakugun;
+
+  @include media(">desktop") {
+    font-size: 50px;
+  }
+  @include media(">tablet", "<=desktop") {
+    font-size: 40px;
+  }
+  @include media(">phone", "<=tablet") {
+    font-size: 30px;
+  }
+  @include media("<=phone") {
+    font-size: 20px;
+  }
+}
+
+.container {
+  // @keyframes fade-out-and-in {
+  //   0% {
+  //     opacity: 1;
+  //   }
+
+  //   50% {
+  //     opacity: 0;
+  //   }
+
+  //   100% {
+  //     opacity: 1;
+  //   }
+  // }
+
+  .block {
+    z-index: 2;
+    position: relative;
+    padding: 1px;
+    min-height: 100vh;
+
+    &.two {
+      height: 133vh;
+      text-align: center;
+    }
+    &.haha {
+      background-color: #a23;
+    }
+    &.three {
+      height: 123vh;
+    }
+  }
+}
