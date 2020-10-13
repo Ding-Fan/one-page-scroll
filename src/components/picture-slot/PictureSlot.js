@@ -26,15 +26,23 @@ export default function PictureSlot({ picture }) {
     return () => {};
   }, [picture]);
 
-  return (
-    <div className='picture-slot'>
-      <img
-        onLoad={() => setVanish(false)}
-        className={vanish ? "vanish" : ""}
-        src={showPicture}
-        alt='picture'
-      />
-      <div className='edge-shade'></div>
-    </div>
-  );
+  function getResult() {
+    if (showPicture) {
+      return (
+        <div className='picture-slot'>
+          <img
+            onLoad={() => setVanish(false)}
+            className={vanish ? "vanish" : ""}
+            src={showPicture}
+            alt='picture'
+          />
+          <div className='edge-shade'></div>
+        </div>
+      );
+    } else {
+      return <div className='picture-slot'></div>;
+    }
+  }
+
+  return getResult();
 }

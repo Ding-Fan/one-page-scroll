@@ -1,9 +1,9 @@
 import React from "react";
-import Button from "./Button";
+import Button from "~/src/components/blocks/ending/components/Button";
 
-export default function Ending() {
+export default function Ending({ index }) {
   return (
-    <div data-trigger='ending' className='block ending'>
+    <div data-trigger='ending' data-index={index} className='block ending'>
       <div className='title'>FIN</div>
       <div className='text'>
         每一部电影都是生活的延伸 而正因为你的每一次评分，豆瓣电影才变得更加完整

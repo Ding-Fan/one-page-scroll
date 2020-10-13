@@ -1,8 +1,12 @@
 import React from "react";
-import MovieThumbnail from "~/src/components/blocks/content-right/MovieThumbnail.js";
-export default function ContentRight() {
+import MovieThumbnail from "~/src/components/blocks/content-right/components/MovieThumbnail.js";
+export default function ContentRight({ index }) {
   return (
-    <div data-trigger='content-right' className='block content-right'>
+    <div
+      data-trigger='content-right'
+      data-index={index}
+      className='block content-right'
+    >
       <div className='movie-information'>
         <div className='section-one'>
           <h2>这个咖啡好喝</h2>

@@ -6,9 +6,10 @@
 @import "~/src/scss/theme.scss";
 @import "~/src/components/app/App.scss";
 @import "~/src/components/top-bar/TopBar.scss";
+@import "~/src/components/picture-slot/PictureSlot.scss";
 @import "~/src/components/blocks/cover/Cover.scss";
 @import "~/src/components/blocks/content-right/ContentRight.scss";
-@import "~/src/components/blocks/content-right/MovieThumbnail.scss";
-@import "~/src/components/picture-slot/PictureSlot.scss";
+@import "~/src/components/blocks/content-right/components/MovieThumbnail.scss";
+@import "~/src/components/blocks/shot/Shot.scss";
 @import "~/src/components/blocks/ending/Ending.scss";
-@import "~/src/components/blocks/ending/Button.scss";
+@import "~/src/components/blocks/ending/components/Button.scss";

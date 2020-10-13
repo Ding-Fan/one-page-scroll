@@ -1,0 +1,23 @@
+.block.shot {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10rem;
+  text-align: center;
+  .picture {
+    height: 80vh;
+    overflow: hidden;
+    img {
+      width: 100%;
+    }
+  }
+  .quote {
+    height: 15vh;
+    padding: 0.4rem;
+    font-size: 1rem;
+  }
+  .source {
+    height: 5vh;
+    font-size: 0.8rem;
+    margin-left: auto;
+  }
+}

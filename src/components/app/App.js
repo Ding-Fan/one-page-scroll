@@ -13,25 +13,43 @@ const appDataDefault = {
   "picture-slot": {
     picture: require("/src/attachments/images/jack-atkinson-yRCLljFHJGQ-unsplash.jpg"),
   },
-  cover: {
-    imgUrl: require("/src/attachments/images/jack-atkinson-yRCLljFHJGQ-unsplash.jpg"),
-  },
-  "content-right": {
-    imgUrl: require("/src/attachments/images/jamison-riley-EWCf5Qpqd3E-unsplash.jpg"),
-  },
-  shot: {
-    imgUrl: require("/src/attachments/images/yuka.jpg"),
-  },
-  ending: {
-    imgUrl: require("~/src/attachments/images/fiona-bowden-XvLRRaArUQg-unsplash.jpg"),
-  },
+  dataList: [
+    {
+      type: "cover",
+      imgUrl: require("/src/attachments/images/jack-atkinson-yRCLljFHJGQ-unsplash.jpg"),
+    },
+    {
+      type: "content-right",
+      imgUrl: require("/src/attachments/images/jamison-riley-EWCf5Qpqd3E-unsplash.jpg"),
+    },
+    {
+      type: "content-right",
+      imgUrl: require("/src/attachments/images/jamison-riley-EWCf5Qpqd3E-unsplash.jpg"),
+    },
+    {
+      type: "content-right",
+      imgUrl: require("/src/attachments/images/jamison-riley-EWCf5Qpqd3E-unsplash.jpg"),
+    },
+    {
+      type: "shot",
+      imgUrl: "",
+      showImage: require("/src/attachments/images/yuka.jpg"),
+      quote:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, in.",
+      source: "--haha",
+    },
+    {
+      type: "ending",
+      imgUrl: require("~/src/attachments/images/fiona-bowden-XvLRRaArUQg-unsplash.jpg"),
+    },
+  ],
 };
 
 function App() {
   const [appData, setAppData] = useState(appDataDefault);
-  // const [imgSrc, vanish] = useChangePictureSlotImage(0);
+  // const [picture, vanish] = useChangePictureSlotImage(0);
   console.log("App here");
-  // console.log("imgSrc", imgSrc);
+  // console.log("picture", picture);
   // console.log("vanish", vanish);
 
   useEffect(() => {
@@ -50,21 +68,10 @@ function App() {
       let newAppData = { ...appData };
       console.log("newAppData: ", newAppData);
       // need deep clone?
-      newAppData["picture-slot"].picture = appData[blockType].imgUrl;
+      newAppData["picture-slot"].picture =
+        appData.dataList[theElement.dataset.index].imgUrl;
 
       setAppData(newAppData);
-
-      // switch (blockType) {
-      //   case "cover":
-      //     // theElement.setAttribute("src", appData.cover.imgUrl);
-      //     break;
-      //   case "content-right":
-      //     theElement.setAttribute("src", appData[blockType].imgUrl);
-      //     break;
-
-      //   default:
-      //     break;
-      // }
     }
 
     const trigger = new ScrollTrigger();
@@ -78,14 +85,47 @@ function App() {
 
     return () => {};
   }, []);
+
+  function getResult() {
+    let result = appData.dataList.map((block, index) => {
+      let showBlock;
+
+      switch (block.type) {
+        case "cover":
+          showBlock = <Cover key={index} index={index} />;
+          break;
+        case "content-right":
+          showBlock = <ContentRight key={index} index={index} />;
+          break;
+        case "shot":
+          showBlock = (
+            <Shot
+              showImage={block.showImage}
+              quote={block.quote}
+              source={block.source}
+              key={index}
+              index={index}
+            />
+          );
+          break;
+        case "ending":
+          showBlock = <Ending key={index} index={index} />;
+          break;
+
+        default:
+          break;
+      }
+      return showBlock;
+    });
+
+    return result;
+  }
+
   return (
     <div className='container'>
       <TopBar />
       <PictureSlot picture={appData["picture-slot"].picture} />
-      <Cover />
-      <ContentRight />
-      <Shot />
-      <Ending />
+      {getResult()}
     </div>
   );
 }
