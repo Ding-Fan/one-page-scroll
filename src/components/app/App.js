@@ -6,6 +6,7 @@ import Cover from "../blocks/cover/Cover";
 import ContentRight from "../blocks/content-right/ContentRight";
 import Ending from "~/src/components/blocks/ending/Ending";
 import ScrollTrigger from "@terwanerik/scrolltrigger";
+import Shot from "~/src/components/blocks/shot/Shot";
 import useChangePictureSlotImage from "../../hooks/useChangePictureSlotImage";
 
 const appDataDefault = {
@@ -17,6 +18,9 @@ const appDataDefault = {
   },
   "content-right": {
     imgUrl: require("/src/attachments/images/jamison-riley-EWCf5Qpqd3E-unsplash.jpg"),
+  },
+  shot: {
+    imgUrl: require("/src/attachments/images/yuka.jpg"),
   },
   ending: {
     imgUrl: require("~/src/attachments/images/fiona-bowden-XvLRRaArUQg-unsplash.jpg"),
@@ -47,9 +51,8 @@ function App() {
       console.log("newAppData: ", newAppData);
       // need deep clone?
       newAppData["picture-slot"].picture = appData[blockType].imgUrl;
-      setTimeout(() => {
-        setAppData(newAppData);
-      }, 1200); // }
+
+      setAppData(newAppData);
 
       // switch (blockType) {
       //   case "cover":
@@ -81,6 +84,7 @@ function App() {
       <PictureSlot picture={appData["picture-slot"].picture} />
       <Cover />
       <ContentRight />
+      <Shot />
       <Ending />
     </div>
   );

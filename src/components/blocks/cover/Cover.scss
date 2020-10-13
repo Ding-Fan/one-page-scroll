@@ -15,7 +15,7 @@
         width: 50vw;
       }
       @include media(">phone", "<=tablet") {
-        width: 60vw;
+        width: 55vw;
       }
       @include media("<=phone") {
         width: 70vw;

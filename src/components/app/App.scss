@@ -1,5 +1,3 @@
-$ding-dark: #000;
-$byakugun: #78c2c4;
 $breakpoints: (
   phone: 700px,
   tablet: 1000px,
@@ -31,6 +29,7 @@ html {
 }
 
 .container {
+  width: 100vw;
   // @keyframes fade-out-and-in {
   //   0% {
   //     opacity: 1;
@@ -48,7 +47,7 @@ html {
   .block {
     z-index: 2;
     position: relative;
-    padding: 1px;
+    padding: 0.8rem;
     min-height: 100vh;
 
     &.two {

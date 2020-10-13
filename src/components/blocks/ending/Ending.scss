@@ -14,7 +14,7 @@
     justify-content: space-between;
 
     @include media(">desktop") {
-      font-size: 50px;
+      width: 60vw;
     }
     @include media(">tablet", "<=desktop") {
       font-size: 40px;
@@ -23,6 +23,7 @@
       font-size: 30px;
     }
     @include media("<=phone") {
+      width: 100%;
       flex-direction: column;
       align-items: center;
     }

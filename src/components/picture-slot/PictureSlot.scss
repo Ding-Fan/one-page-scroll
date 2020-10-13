@@ -8,12 +8,11 @@
 
   img {
     transition: all 0.2s;
-    width: 100vw;
-
-    @include media("<=tablet") {
-      width: auto;
-      height: 50vh;
-    }
+    width: 100%;
+    // @include media("<=phone") {
+    //   width: auto;
+    //   height: 50vh;
+    // }
 
     &.vanish {
       opacity: 0;
