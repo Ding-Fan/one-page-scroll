@@ -54,10 +54,8 @@ const appDataDefault = {
 
 function App() {
   const [appData, setAppData] = useState(appDataDefault);
-  // const [picture, vanish] = useChangePictureSlotImage(0);
+
   console.log("App here");
-  // console.log("picture", picture);
-  // console.log("vanish", vanish);
 
   useEffect(() => {
     function blockSeen(trigger) {
@@ -95,7 +93,7 @@ function App() {
               // of the viewport.
 
               // This is the same as returning Math.ceil(0.2 * frame.h)
-              return trigger.visible ? 0 : 0.2;
+              return trigger.visible ? 0 : 0.4;
             },
           },
         },

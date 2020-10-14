@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Howl, Howler } from "howler";
 
 import Languor from "~/src/attachments/musics/22 Languor.mp3";
@@ -24,28 +24,28 @@ let tracks = [
 ];
 
 export default function MusicPlayer() {
-  const [playing, setPlaying] = useState(0);
-  const [currentState, setCurrentState] = useState(true);
+  const playing = useRef(0);
+  const [currentState, setCurrentState] = useState("paused");
 
   /**
    * Skip to the next or previous track.
    * @param  {String} direction 'next' or 'prev'.
    */
   function skip(direction) {
-    console.log("playing", playing);
+    console.log("playing", playing.current);
     let willPlay = 0;
     // Get the next track based on the direction of the track.
     if (direction === "prev") {
-      if (playing <= 0) {
+      if (playing.current <= 0) {
         willPlay = tracks.length - 1;
       } else {
-        willPlay = playing - 1;
+        willPlay = playing.current - 1;
       }
     } else if (direction === "next") {
-      if (playing >= tracks.length - 1) {
+      if (playing.current >= tracks.length - 1) {
         willPlay = 0;
       } else {
-        willPlay = playing + 1;
+        willPlay = playing.current + 1;
       }
     }
 
@@ -59,8 +59,8 @@ export default function MusicPlayer() {
    */
   function skipTo(willPlay) {
     // Stop the current track.
-    if (tracks[playing].howl) {
-      tracks[playing].howl.stop();
+    if (tracks[playing.current].howl) {
+      tracks[playing.current].howl.stop();
     }
 
     // Reset progress.
@@ -72,7 +72,7 @@ export default function MusicPlayer() {
 
   function pause() {
     // Get the Howl we want to manipulate.
-    let sound = tracks[playing].howl;
+    let sound = tracks[playing.current].howl;
 
     // Puase the sound.
     sound.pause();
@@ -88,19 +88,43 @@ export default function MusicPlayer() {
    * @param  {Number} index Index of the song in the playlist (leave empty to play the first or current).
    */
   function play(willPlay) {
-    let sound;
+    loadMusic(willPlay);
+    let sound = tracks[willPlay].howl;
+    // Begin playing the sound.
+    sound.play();
 
+    // Update the track display.
+    // track.innerHTML = index + 1 + ". " + track.title;
+
+    // Show the pause button.
+    if (sound.state() === "loaded") {
+      // playBtn.style.display = "none";
+      // pauseBtn.style.display = "block";
+      setCurrentState("playing");
+    } else {
+      // loading.style.display = "block";
+      // playBtn.style.display = "none";
+      // pauseBtn.style.display = "none";
+      setCurrentState("loading");
+    }
+
+    // Keep track of the index we are currently playing.
+    // self.index = index;
+    playing.current = willPlay;
+    console.log("did set playing");
+  }
+
+  function loadMusic(willPlay) {
     let track = tracks[willPlay];
 
     // If we already loaded this track, use the current one.
     // Otherwise, setup and load a new Howl.
-    if (track.howl) {
-      sound = track.howl;
-    } else {
-      sound = track.howl = new Howl({
+    if (!track.howl) {
+      track.howl = new Howl({
         src: [track.file],
         html5: true, // Force to HTML5 so that the audio can stream in (best for large files).
         volume: 0.5,
+        // rate: 4.0,
         onplay: function () {
           // Display the duration.
           // duration.innerHTML = self.formatTime(Math.round(sound.duration()));
@@ -140,39 +164,17 @@ export default function MusicPlayer() {
         },
       });
     }
-
-    // Begin playing the sound.
-    sound.play();
-
-    // Update the track display.
-    // track.innerHTML = index + 1 + ". " + track.title;
-
-    // Show the pause button.
-    if (sound.state() === "loaded") {
-      // playBtn.style.display = "none";
-      // pauseBtn.style.display = "block";
-      setCurrentState("playing");
-    } else {
-      // loading.style.display = "block";
-      // playBtn.style.display = "none";
-      // pauseBtn.style.display = "none";
-      setCurrentState("loading");
-    }
-
-    // Keep track of the index we are currently playing.
-    // self.index = index;
-    setPlaying(willPlay);
   }
 
   function showState() {
     let result;
     switch (currentState) {
       case "playing":
-        result = <i onClick={clickPause} className='fas fa-volume-mute'></i>;
+        result = <i className='fas fa-volume-mute'></i>;
 
         break;
       case "paused":
-        result = <i onClick={clickPlay} className='fas fa-volume-up'></i>;
+        result = <i className='fas fa-volume-up'></i>;
 
         break;
       case "loading":
@@ -187,7 +189,7 @@ export default function MusicPlayer() {
   }
 
   function clickPlay() {
-    play(playing);
+    play(playing.current);
   }
 
   function clickPause() {
@@ -195,21 +197,14 @@ export default function MusicPlayer() {
   }
 
   useEffect(() => {
-    // https://github.com/goldfire/howler.js#examples
-    // let BGM = new Howl({
-    //   src: [require("~/src/attachments/musics/05 YUKA.mp3")],
-    //   volume: 0.5,
-    // });
-
-    // BGM.play();
-
     // play(0);
-    setCurrentState("paused");
+    // setCurrentState("paused");
 
     return () => {};
-  }, []);
+  }, [playing.current]);
 
   function changeState() {
+    // skip("next");
     if (currentState === "playing") {
       clickPause();
     } else if (currentState === "paused") {
@@ -220,7 +215,7 @@ export default function MusicPlayer() {
   return (
     <div className='music-player' onClick={changeState}>
       <div className='state'>{showState()}</div>
-      <div className='title'>{tracks[playing].title}</div>
+      <div className='title'>{tracks[playing.current].title}</div>
     </div>
   );
 }
