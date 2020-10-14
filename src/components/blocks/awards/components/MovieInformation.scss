@@ -1,0 +1,70 @@
+.movie-information {
+  @include media(">desktop") {
+    width: 40vw;
+  }
+  @include media(">tablet", "<=desktop") {
+    width: 60vw;
+  }
+  @include media(">phone", "<=tablet") {
+    width: 70vw;
+  }
+  @include media("<=phone") {
+    width: 80vw;
+  }
+
+  &.left {
+    margin-right: auto;
+  }
+  &.right {
+    margin-left: auto;
+  }
+
+  .section-one {
+    background-color: rgba($usubeni, 0.6);
+    padding: 0.5rem;
+    h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+  }
+
+  .section-two {
+    background-color: rgba($ding-dark, 0.4);
+    padding: 0.5rem;
+    display: flex;
+
+    .left-part {
+      padding-right: 0.5rem;
+      img {
+        width: 5rem;
+      }
+    }
+
+    .right-part {
+      flex-direction: column;
+      display: flex;
+      width: 10rem;
+      .title {
+        display: flex;
+        align-items: center;
+        .ranking {
+          font-size: 0.5rem;
+          background-color: $ukon;
+          border-radius: 999px;
+          padding: 0.12rem 0.4rem;
+        }
+        .text {
+          font-size: 0.7rem;
+          margin-left: 0.2rem;
+        }
+      }
+
+      .rating {
+      }
+
+      .description {
+        font-size: 0.4rem;
+      }
+    }
+  }
+}

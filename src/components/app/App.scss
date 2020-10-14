@@ -12,10 +12,10 @@ $breakpoints: (
 
 html {
   background-color: $ding-dark;
-  color: $byakugun;
+  color: $shironeri;
 
   @include media(">desktop") {
-    font-size: 50px;
+    font-size: 45px;
   }
   @include media(">tablet", "<=desktop") {
     font-size: 40px;
@@ -29,7 +29,11 @@ html {
 }
 
 .container {
-  width: 100vw;
+  /*
+  // this could cause weird space and x scroll shows up
+  // I don't know why
+  // width: 100vw;
+*/
   // @keyframes fade-out-and-in {
   //   0% {
   //     opacity: 1;
@@ -46,19 +50,8 @@ html {
 
   .block {
     z-index: 2;
-    position: relative;
     padding: 0.8rem;
+    position: relative;
     min-height: 100vh;
-
-    &.two {
-      height: 133vh;
-      text-align: center;
-    }
-    &.haha {
-      background-color: #a23;
-    }
-    &.three {
-      height: 123vh;
-    }
   }
 }

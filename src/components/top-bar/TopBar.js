@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import MusicPlayer from "~/src/components/top-bar/components/MusicPlayer";
 
 function TopBar() {
   return (
@@ -7,7 +8,8 @@ function TopBar() {
         <div className='logo'>😎</div>
         <div className='description'>电影榜单</div>
       </div>
-      <div className='music-player'>music player</div>
+
+      <MusicPlayer />
     </div>
   );
 }

@@ -16,8 +16,10 @@
     "sass": "^1.27.0"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.1",
     "@terwanerik/scrolltrigger": "^1.0.5",
     "aos": "^2.3.4",
+    "howler": "^2.2.0",
     "include-media": "^1.4.9",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
