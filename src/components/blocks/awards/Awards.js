@@ -5,24 +5,24 @@ export default function Awards({
   index,
   header,
   position,
-  firstTitle,
-  rating,
+  rankList,
+  firstPlace,
 }) {
+  function getResult() {
+    let result = rankList.map((movie, index) => {
+      return <MovieThumbnail key={index} movie={movie} />;
+    });
+
+    return result;
+  }
   return (
     <div data-trigger='awards' data-index={index} className='block awards'>
       <MovieInformation
         position={position}
         header={header}
-        firstTitle={firstTitle}
-        rating={rating}
+        firstPlace={firstPlace}
       />
-      <div className='rest-movies'>
-        <MovieThumbnail />
-        <MovieThumbnail />
-        <MovieThumbnail />
-        <MovieThumbnail />
-        <MovieThumbnail />
-      </div>
+      <div className='rest-movies'>{getResult()}</div>
     </div>
   );
 }
