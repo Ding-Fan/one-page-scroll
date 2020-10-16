@@ -9,7 +9,7 @@ import Awards from "../blocks/awards/Awards";
 import Ending from "~/src/components/blocks/ending/Ending";
 import ScrollTrigger from "@terwanerik/scrolltrigger";
 import Shot from "~/src/components/blocks/shot/Shot";
-import useChangePictureSlotImage from "../../hooks/useChangePictureSlotImage";
+// import useChangePictureSlotImage from "../../hooks/useChangePictureSlotImage";
 
 const appDataDefault = {
   "picture-slot": {
@@ -26,6 +26,7 @@ const appDataDefault = {
       imgUrl: require("/src/attachments/images/compat-210091.jpg"),
       header: "优夏优夏优夏优夏",
       firstTitle: "钓鱼🎣",
+      rating: 9.2,
     },
     {
       type: "awards",
@@ -126,6 +127,7 @@ function App() {
               header={block.header}
               firstTitle={block.firstTitle}
               position={block.position}
+              rating={block.rating}
             />
           );
           break;

@@ -1,6 +1,8 @@
-.awards {
+.block.awards {
+  padding: 1rem 0;
   .rest-movies {
     display: flex;
     justify-content: space-between;
+    padding: 10vw calc(25vw - 1rem);
   }
 }

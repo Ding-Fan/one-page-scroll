@@ -22,6 +22,7 @@
     "howler": "^2.2.0",
     "include-media": "^1.4.9",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-rater": "^5.1.1"
   }
 }

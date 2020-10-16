@@ -12,13 +12,26 @@
     width: 80vw;
   }
 
+  &.left {
+    margin-right: auto;
+    .section-one {
+      // padding: 1rem 1rem 1rem 20vw;
+      width: 20vw;
+    }
+    .section-two {
+      width: 20vw;
+    }
+  }
+  &.right {
+    margin-left: auto;
+  }
+
   .section-one {
     background-color: rgba($usubeni, 0.6);
     padding: 1rem;
 
     h2 {
       font-size: 1.1rem;
-      width: 20vw;
       font-weight: 700;
     }
   }
@@ -28,9 +41,17 @@
     padding: 1rem;
     display: flex;
 
-    flex-direction: column;
-    .box {
-      width: 20vw;
+    .left-part {
+      padding-right: 0.5rem;
+      img {
+        width: 5rem;
+      }
+    }
+
+    .right-part {
+      flex-direction: column;
+      display: flex;
+      width: 10rem;
       .title {
         display: flex;
         align-items: center;
@@ -47,29 +68,11 @@
       }
 
       .rating {
-        font-size: 0.4rem;
       }
 
       .description {
         font-size: 0.4rem;
       }
     }
-  }
-
-  &.left {
-    margin-right: auto;
-    .section-one {
-      h2 {
-        margin-left: auto;
-      }
-    }
-    .section-two {
-      .box {
-        margin-left: auto;
-      }
-    }
-  }
-  &.right {
-    margin-left: auto;
   }
 }

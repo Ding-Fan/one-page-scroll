@@ -15,3 +15,7 @@
 @import "~/src/components/blocks/shot/Shot.scss";
 @import "~/src/components/blocks/ending/Ending.scss";
 @import "~/src/components/blocks/ending/components/Button.scss";
+
+$react-rater-active: $ukon; // color of star rated
+// use font size to change star size
+@import "react-rater/lib/react-rater.scss";
