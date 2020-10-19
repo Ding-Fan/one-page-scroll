@@ -28,6 +28,23 @@ html {
   }
 }
 
+// https://github.com/reaviz/realayers#-css-variables
+body {
+  --color-popover: rgb(0, 0, 0, 0.8);
+  --color-on-popover: white;
+
+  --color-tooltip: rgb(0, 0, 0, 0.8);
+  --color-on-tooltip: white;
+
+  --color-dialog: #2c2c35;
+  --color-on-dialog: #fff;
+
+  --color-drawer: #2c2c35;
+  --color-on-drawer: #fff;
+
+  --color-layer-transparent: rgba(5, 6, 12, 0.9);
+}
+
 .container {
   /*
   // this could cause weird space and x scroll shows up

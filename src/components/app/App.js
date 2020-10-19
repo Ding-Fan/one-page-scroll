@@ -9,6 +9,9 @@ import Awards from "../blocks/awards/Awards";
 import Ending from "~/src/components/blocks/ending/Ending";
 import ScrollTrigger from "@terwanerik/scrolltrigger";
 import Shot from "~/src/components/blocks/shot/Shot";
+import { useDrawer } from "realayers";
+
+import { Switch, Route, Link, useParams } from "react-router-dom";
 // import useChangePictureSlotImage from "../../hooks/useChangePictureSlotImage";
 
 const appDataDefault = {
@@ -77,7 +80,9 @@ const appDataDefault = {
 function App() {
   const [appData, setAppData] = useState(appDataDefault);
 
+  let { showing } = useParams();
   console.log("App here");
+  const { toggleOpen, Drawer } = useDrawer();
 
   useEffect(() => {
     function blockSeen(trigger) {
@@ -104,30 +109,47 @@ function App() {
     const trigger = new ScrollTrigger({
       trigger: {
         offset: {
-          viewport: {
+          // Set an offset based on the elements position, returning an
+          // integer = offset in px, float = offset in percentage of either
+          // width (when setting the x offset) or height (when setting y)
+          //
+          // So setting an yOffset of 0.2 means 20% of the elements height,
+          // the callback / class will be toggled when the element is 20%
+          // in the viewport.
+          element: {
             x: 0,
-            y: (trigger, frame, direction) => {
-              // We check if the trigger is visible, if so, the offset
-              // on the viewport is 0, otherwise it's 20% of the height
-              // of the viewport. This causes the triggers to animate
-              // 'on screen' when the element is in the viewport, but
-              // don't trigger the 'out' class until the element is out
-              // of the viewport.
-
-              // This is the same as returning Math.ceil(0.2 * frame.h)
-              return trigger.visible ? 0 : 0.4;
+            y: (trigger, rect, direction) => {
+              // You can add custom offsets according to callbacks, you
+              // get passed the trigger, rect (DOMRect) and the scroll
+              // direction, a string of either top, left, right or
+              // bottom.
+              return 0.5;
             },
+          },
+          // viewport: {
+          //   x: 0,
+          //   y: (trigger, frame, direction) => {
+          //     // We check if the trigger is visible, if so, the offset
+          //     // on the viewport is 0, otherwise it's 20% of the height
+          //     // of the viewport. This causes the triggers to animate
+          //     // 'on screen' when the element is in the viewport, but
+          //     // don't trigger the 'out' class until the element is out
+          //     // of the viewport.
+
+          //     // This is the same as returning Math.ceil(0.2 * frame.h)
+          //     return trigger.visible ? 0 : 0.4;
+          //   },
+          // },
+        },
+        once: false,
+        toggle: {
+          callback: {
+            in: blockSeen,
           },
         },
       },
     });
-    trigger.add("[data-trigger]", {
-      toggle: {
-        callback: {
-          in: blockSeen,
-        },
-      },
-    });
+    trigger.add("[data-trigger]");
 
     return () => {};
   }, []);
@@ -178,11 +200,36 @@ function App() {
   }
 
   return (
-    <div className='container'>
-      <TopBar />
-      <PictureSlot picture={appData["picture-slot"].picture} />
-      {getResult()}
-    </div>
+    <Switch>
+      <Route path='/'>
+        <div className='container'>
+          {/* https://github.com/Shilza/react-pretty-drawer#api */}
+          <Drawer size={"20%"}>
+            <div>
+              <button
+                onClick={() => {
+                  document.querySelector(".cover.block").scrollIntoView();
+                }}
+              >
+                go cover
+              </button>
+              <button
+                onClick={() => {
+                  document
+                    .querySelector(".awards.block[data-index='1']")
+                    .scrollIntoView();
+                }}
+              >
+                go awards 0
+              </button>
+            </div>
+          </Drawer>
+          <TopBar openDrawer={toggleOpen} />
+          <PictureSlot picture={appData["picture-slot"].picture} />
+          {getResult()}
+        </div>
+      </Route>
+    </Switch>
   );
 }
 

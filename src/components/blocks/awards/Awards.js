@@ -22,7 +22,9 @@ export default function Awards({
         header={header}
         firstPlace={firstPlace}
       />
-      <div className='rest-movies'>{getResult()}</div>
+      <div className='rest-movies'>
+        <div className='box'>{getResult()}</div>
+      </div>
     </div>
   );
 }

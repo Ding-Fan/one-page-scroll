@@ -1,7 +1,7 @@
 import React from "react";
 import MusicPlayer from "~/src/components/top-bar/components/MusicPlayer";
 
-function TopBar() {
+function TopBar({ openDrawer }) {
   return (
     <div className='top-bar'>
       <div className='website-info'>
@@ -10,6 +10,7 @@ function TopBar() {
       </div>
 
       <MusicPlayer />
+      <button onClick={openDrawer}>Open</button>
     </div>
   );
 }
