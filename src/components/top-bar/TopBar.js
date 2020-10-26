@@ -10,7 +10,9 @@ function TopBar({ openDrawer }) {
       </div>
 
       <MusicPlayer />
-      <button onClick={openDrawer}>Open</button>
+      <div onClick={openDrawer} className='category'>
+        目录
+      </div>
     </div>
   );
 }

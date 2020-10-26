@@ -1,0 +1,17 @@
+diff --git a/node_modules/realayers/dist/index.js b/node_modules/realayers/dist/index.js
+index 0906d66..3805fd8 100644
+--- a/node_modules/realayers/dist/index.js
++++ b/node_modules/realayers/dist/index.js
+@@ -267,9 +267,9 @@
+             setInternalOpen(false);
+             onClose === null || onClose === void 0 ? void 0 : onClose();
+         }, [onClose]);
+-        const onToggleOpen = React.useCallback(() => {
+-            setInternalOpen(!open);
+-        }, []);
++        const onToggleOpen = () => {
++            setInternalOpen(!internalOpen);
++        };
+         const Component = React.useCallback((props) => (React__default['default'].createElement(Drawer, Object.assign({}, props, { open: internalOpen, onClose: onCloseInternal }))), [internalOpen, onCloseInternal]);
+         return {
+             isOpen: internalOpen,

@@ -19,10 +19,10 @@
     "@fortawesome/fontawesome-free": "^5.15.1",
     "@terwanerik/scrolltrigger": "^1.0.5",
     "aos": "^2.3.4",
-    "howler": "^2.2.0",
+    "howler": "^2.2.1",
     "include-media": "^1.4.9",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "react-rater": "^5.1.1",
     "react-router-dom": "^5.2.0",
     "realayers": "^2.2.0"

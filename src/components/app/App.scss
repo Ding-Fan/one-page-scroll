@@ -30,6 +30,8 @@ html {
 
 // https://github.com/reaviz/realayers#-css-variables
 body {
+  // drawer settings start
+  // direct children of body tag would work, otherwise won't work
   --color-popover: rgb(0, 0, 0, 0.8);
   --color-on-popover: white;
 
@@ -43,6 +45,17 @@ body {
   --color-on-drawer: #fff;
 
   --color-layer-transparent: rgba(5, 6, 12, 0.9);
+
+  .close-drawer {
+    cursor: pointer;
+    color: $ginnezumi;
+  }
+
+  .category-name {
+    cursor: pointer;
+  }
+
+  // drawer settings end
 }
 
 .container {
@@ -64,6 +77,36 @@ body {
   //     opacity: 1;
   //   }
   // }
+
+  .desktop-drawer {
+    @include media(">desktop") {
+      display: block;
+    }
+    @include media(">tablet", "<=desktop") {
+      display: block;
+    }
+    @include media(">phone", "<=tablet") {
+      display: none;
+    }
+    @include media("<=phone") {
+      display: none;
+    }
+  }
+
+  .mobile-drawer {
+    @include media(">desktop") {
+      display: none;
+    }
+    @include media(">tablet", "<=desktop") {
+      display: none;
+    }
+    @include media(">phone", "<=tablet") {
+      display: block;
+    }
+    @include media("<=phone") {
+      display: block;
+    }
+  }
 
   .block {
     z-index: 2;

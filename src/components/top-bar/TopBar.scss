@@ -9,6 +9,8 @@
   top: 0;
   width: 100%;
   .website-info {
+    margin-right: auto;
+
     @include media(">desktop") {
       height: 2rem;
       line-height: 1rem;
@@ -31,5 +33,9 @@
     }
     .description {
     }
+  }
+
+  .category {
+    cursor: pointer;
   }
 }

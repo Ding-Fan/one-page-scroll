@@ -21,6 +21,7 @@ const appDataDefault = {
   dataList: [
     {
       type: "cover",
+      header: "封面",
       imgUrl: require("/src/attachments/images/3c550e0c211fc613cc6ea50b88bffc0c.png"),
     },
     {
@@ -64,6 +65,7 @@ const appDataDefault = {
 
     {
       type: "shot",
+      header: "若喝水出现了",
       imgUrl: "",
       showImage: require("/src/attachments/images/yuka.jpg"),
       quote: "生活中，若喝水出现了，我们就不得不考虑它出现了的事实。",
@@ -72,6 +74,7 @@ const appDataDefault = {
     },
     {
       type: "ending",
+      header: "结束",
       imgUrl: require("~/src/attachments/images/fiona-bowden-XvLRRaArUQg-unsplash.jpg"),
     },
   ],
@@ -199,31 +202,75 @@ function App() {
     return result;
   }
 
+  function GetCategory() {
+    function scrollTool(block, index) {
+      // https://robinvdvleuten.nl/blog/scroll-a-react-component-into-view/
+      return () =>
+        document
+          .querySelector(`.${block.type}.block[data-index='${index}']`)
+          .scrollIntoView();
+    }
+
+    let category = appData.dataList.map((block, index) => {
+      let showCategory;
+
+      showCategory = (
+        <div
+          key={index}
+          onClick={() => scrollTool(block, index)()}
+          className='category-name'
+        >
+          {block.header}
+        </div>
+      );
+
+      return showCategory;
+    });
+
+    return category;
+  }
+
   return (
     <Switch>
       <Route path='/'>
         <div className='container'>
-          {/* https://github.com/Shilza/react-pretty-drawer#api */}
-          <Drawer size={"20%"}>
-            <div>
-              <button
-                onClick={() => {
-                  document.querySelector(".cover.block").scrollIntoView();
-                }}
-              >
-                go cover
-              </button>
-              <button
-                onClick={() => {
-                  document
-                    .querySelector(".awards.block[data-index='1']")
-                    .scrollIntoView();
-                }}
-              >
-                go awards 0
-              </button>
+          {/* https://github.com/reaviz/realayers#drawer */}
+          {/* desktop drawer */}
+          <Drawer
+            showCloseButton={false}
+            position={"top"}
+            className='desktop-drawer'
+            size={"50%"}
+          >
+            <div
+              onClick={() => {
+                toggleOpen();
+              }}
+              className='close-drawer'
+            >
+              关闭
             </div>
+            {/* <div>{getCategory()}</div> */}
+            <GetCategory />
           </Drawer>
+          {/* mobile drawer */}
+          {/* <Drawer
+            showCloseButton={false}
+            className='mobile-drawer'
+            size={"70%"}
+          >
+            <div>
+              <div
+                onClick={() => {
+                  toggleOpen();
+                }}
+                className='close-drawer'
+              >
+                关闭
+              </div>
+              {getCategory()}
+            </div>
+          </Drawer> */}
           <TopBar openDrawer={toggleOpen} />
           <PictureSlot picture={appData["picture-slot"].picture} />
           {getResult()}
