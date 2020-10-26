@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "parcel index.html",
     "build": "parcel build index.html",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "patch-package"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +22,7 @@
     "aos": "^2.3.4",
     "howler": "^2.2.1",
     "include-media": "^1.4.9",
+    "patch-package": "^6.2.2",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-rater": "^5.1.1",
