@@ -15,15 +15,16 @@ export default function Awards({
 
     return result;
   }
+
   return (
-    <div data-trigger='awards' data-index={index} className='block awards'>
+    <div data-trigger="awards" data-index={index} className="block awards">
       <MovieInformation
         position={position}
         header={header}
         firstPlace={firstPlace}
       />
-      <div className='rest-movies'>
-        <div className='box'>{getResult()}</div>
+      <div className="rest-movies">
+        <div className="box">{getResult()}</div>
       </div>
     </div>
   );

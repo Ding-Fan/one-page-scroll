@@ -3,19 +3,8 @@ import { kea } from "kea";
 const logic = kea({
   actions: {
     setPictureInPictureSlot: (picture) => ({ picture }),
-    increment: (amount) => ({ amount }),
-    setCounter: (counter) => ({ counter }),
-    reset: true,
   },
   reducers: {
-    counter: [
-      0,
-      {
-        increment: (state, { amount }) => state + amount,
-        setCounter: (_, { counter }) => counter,
-        reset: () => 0,
-      },
-    ],
     pictureInPictureSlot: [
       "",
       {
@@ -28,6 +17,7 @@ const logic = kea({
           type: "cover",
           header: "封面",
           imgUrl: require("/src/attachments/images/3c550e0c211fc613cc6ea50b88bffc0c.png"),
+          coverPicture: require("~/src/attachments/images/9bed9658634281e6128aa6f2979a7944.png"),
         },
         {
           type: "awards",
@@ -65,6 +55,20 @@ const logic = kea({
               rating: 3.2,
               link: "https://www.meiriyiwen.com/",
             },
+            {
+              ranking: 4,
+              thumbnail: require("~/src/attachments/images/p2503644828.jpg"),
+              name: "钓鱼🎣",
+              rating: 3.2,
+              link: "https://www.meiriyiwen.com/",
+            },
+            {
+              ranking: 5,
+              thumbnail: require("~/src/attachments/images/p2503644828.jpg"),
+              name: "钓鱼🎣",
+              rating: 3.2,
+              link: "https://www.meiriyiwen.com/",
+            },
           ],
         },
 
@@ -78,12 +82,55 @@ const logic = kea({
           sourceLink: "https://www.meiriyiwen.com/",
         },
         {
+          type: "reference",
+          header: "参考与引用",
+          imgUrl: "",
+          referenceList: [
+            {
+              title: "阿保刚阿保刚阿保刚阿保刚阿保刚阿保刚",
+              link:
+                "https://zh.wikipedia.org/zh-cn/%E9%98%BF%E4%BF%9D%E5%89%9B",
+            },
+            {
+              title: "阿保刚阿保刚阿保刚阿保刚阿保刚阿保刚",
+              link:
+                "https://zh.wikipedia.org/zh-cn/%E9%98%BF%E4%BF%9D%E5%89%9B",
+            },
+            {
+              title: "阿保刚阿保刚阿保刚阿保刚阿保刚阿保刚",
+              link:
+                "https://zh.wikipedia.org/zh-cn/%E9%98%BF%E4%BF%9D%E5%89%9B",
+            },
+            {
+              title: "阿保刚阿保刚阿保刚阿保刚阿保刚阿保刚",
+              link:
+                "https://zh.wikipedia.org/zh-cn/%E9%98%BF%E4%BF%9D%E5%89%9B",
+            },
+          ],
+        },
+        {
           type: "ending",
           header: "结束",
           imgUrl: require("~/src/attachments/images/fiona-bowden-XvLRRaArUQg-unsplash.jpg"),
         },
       ],
       {},
+    ],
+  },
+  selectors: {
+    referenceData: [
+      (selectors) => [selectors.dataList],
+      (dataList) => {
+        const theData = dataList.filter((item) => item.type === "reference");
+        return theData[0].referenceList;
+      },
+    ],
+    coverPicture: [
+      (selectors) => [selectors.dataList],
+      (dataList) => {
+        const theData = dataList.filter((item) => item.type === "cover");
+        return theData[0].coverPicture;
+      },
     ],
   },
 });

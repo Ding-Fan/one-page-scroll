@@ -4,8 +4,9 @@ import { useValues } from "kea";
 
 import Cover from "../blocks/cover/Cover";
 import Awards from "../blocks/awards/Awards";
-import Ending from "~/src/components/blocks/ending/Ending";
 import Shot from "~/src/components/blocks/shot/Shot";
+import Reference from "~/src/components/blocks/reference/Reference";
+import Ending from "~/src/components/blocks/ending/Ending";
 
 export default function BlocksContainer() {
   const { dataList } = useValues(logic);
@@ -40,6 +41,9 @@ export default function BlocksContainer() {
             index={index}
           />
         );
+        break;
+      case "reference":
+        showBlock = <Reference key={index} index={index} />;
         break;
       case "ending":
         showBlock = <Ending key={index} index={index} />;
