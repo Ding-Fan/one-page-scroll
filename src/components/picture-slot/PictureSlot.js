@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { useValues } from "kea";
+import logic from "~/src/logic/index";
 
-export default function PictureSlot({ picture }) {
+export default function PictureSlot() {
   // use throttle
 
   const [showPicture, setShowPicture] = useState("");
@@ -16,31 +18,33 @@ export default function PictureSlot({ picture }) {
   //   }, 600);
   // }
 
+  const { pictureInPictureSlot } = useValues(logic);
+
   useEffect(() => {
     setVanish(true);
 
     setTimeout(() => {
-      setShowPicture(picture);
+      setShowPicture(pictureInPictureSlot);
     }, 300);
 
     return () => {};
-  }, [picture]);
+  }, [pictureInPictureSlot]);
 
   function getResult() {
     if (showPicture) {
       return (
-        <div className='picture-slot'>
+        <div className="picture-slot">
           <img
             onLoad={() => setVanish(false)}
             className={vanish ? "vanish" : ""}
             src={showPicture}
-            alt='picture'
+            alt="picture"
           />
-          <div className='edge-shade'></div>
+          <div className="edge-shade"></div>
         </div>
       );
     } else {
-      return <div className='picture-slot'></div>;
+      return <div className="picture-slot"></div>;
     }
   }
 
