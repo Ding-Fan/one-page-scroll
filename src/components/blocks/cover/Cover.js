@@ -7,6 +7,11 @@ export default function Cover({ index }) {
 
   return (
     <div data-trigger="cover" data-index={index} className="block cover">
+      {/* <img
+        // className={vanish ? "vanish" : ""}
+        src={pictureInPictureSlot}
+        alt="picture"
+      /> */}
       <div className="picture">
         <img src={coverPicture} alt="picture" />
       </div>

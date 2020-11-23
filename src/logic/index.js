@@ -2,13 +2,13 @@ import { kea } from "kea";
 
 const logic = kea({
   actions: {
-    setPictureInPictureSlot: (picture) => ({ picture }),
+    setRollFilmIndex: (number) => ({ number }),
   },
   reducers: {
-    pictureInPictureSlot: [
-      "",
+    rollFilmIndex: [
+      0,
       {
-        setPictureInPictureSlot: (_, { picture }) => picture,
+        setRollFilmIndex: (_, { number }) => number,
       },
     ],
     dataList: [
