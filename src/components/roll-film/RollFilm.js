@@ -26,8 +26,8 @@ export default function RollFilm() {
         (rollFilmIndex > dataList.length - 2 && direction > 0) ||
         (rollFilmIndex < 1 && direction < 0)
       ) {
-        console.log(`rollFilmIndex is ${rollFilmIndex}`);
-        console.log(`direction is ${direction}`);
+        // console.log(`rollFilmIndex is ${rollFilmIndex}`);
+        // console.log(`direction is ${direction}`);
 
         return;
       }
@@ -37,8 +37,8 @@ export default function RollFilm() {
         result = 0;
       }
 
-      console.log(`result is ${result}`);
-      console.log(`direction is ${direction}`);
+      // console.log(`result is ${result}`);
+      // console.log(`direction is ${direction}`);
       // debugger;
       setRollFilmIndex(result);
     },
@@ -47,8 +47,8 @@ export default function RollFilm() {
 
   useEffect(() => {
     setSpring({ transform: `translateY(-${rollFilmIndex * 100}vh)` });
-    console.log(`useEffect rollFilmIndex is ${rollFilmIndex}`);
-    console.log("props", props);
+    // console.log(`useEffect rollFilmIndex is ${rollFilmIndex}`);
+    // console.log("props", props);
   }, [setSpring, rollFilmIndex]);
 
   const bind = useGesture(
@@ -61,21 +61,24 @@ export default function RollFilm() {
       onTouchStart: ({ event }) => {
         const value = event.changedTouches[0].clientY;
         setTouchStartY(value);
-        console.log("set touch start y", value);
+        // console.log("set touch start y", value);
       },
       onTouchEnd: ({ event }) => {
         const touchEndY = event.changedTouches[0].clientY;
-        console.log("set touch end y", touchEndY);
+        // console.log("set touch end y", touchEndY);
         if (touchStartY > touchEndY + 5) {
           runSprings(1);
         } else if (touchStartY < touchEndY - 5) {
           runSprings(-1);
         }
       },
+      onKeyUp: (state) => {
+        console.log("key up state", state);
+      },
     },
     {
       wheel: {
-        threshold: 10,
+        threshold: 5,
       },
     }
   );
