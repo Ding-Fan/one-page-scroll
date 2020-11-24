@@ -75,7 +75,7 @@ export default function RollFilm() {
     },
     {
       wheel: {
-        threshold: 20,
+        threshold: 10,
       },
     }
   );
