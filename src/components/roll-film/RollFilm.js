@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import logic from "~/src/logic";
 import { useActions, useValues } from "kea";
 import { useSpring, a } from "react-spring";
@@ -35,11 +35,18 @@ export default function RollFilm() {
     if (result < 1) {
       result = 0;
     }
-    // console.log(`rollFilmIndex is ${rollFilmIndex}`);
 
-    // console.log(`result is ${result}`);
-    // console.log(`direction is ${direction}`);
     setRollFilmIndex(result);
+  };
+
+  const rollIt = useRef(0);
+
+  const handleWheel = (event) => {
+    if (event.deltaY > 0) {
+      handleRolling(1);
+    } else {
+      handleRolling(-1);
+    }
   };
 
   useEffect(() => {
@@ -60,14 +67,14 @@ export default function RollFilm() {
     return () => document.removeEventListener("keyup", keyUpHandler);
   }, [setSpring, rollFilmIndex]);
 
-  const bind = useGesture(
+  useGesture(
     {
-      onWheel: (state) => {
-        console.log("onWheel state", state);
-        if (state.last) {
-          handleRolling(state.direction[1]);
-        }
-      },
+      // onWheel: (state) => {
+      //   console.log("onWheel state", state);
+      //   if (state.last) {
+      //     handleRolling(state.direction[1]);
+      //   }
+      // },
       // handle about touch on mobile
       // https://stackoverflow.com/a/22257774
       // chrome on android remote debug
@@ -93,12 +100,13 @@ export default function RollFilm() {
 
       //   hahaTest();
       // },
+    },
+    {
+      domTarget: window,
+      // wheel: {
+      // threshold: 2,
+      // },
     }
-    // {
-    // wheel: {
-    // threshold: 2,
-    // },
-    // }
   );
 
   let result = dataList.map((block, index) => {
@@ -160,7 +168,7 @@ export default function RollFilm() {
   });
 
   return (
-    <div {...bind()} className="roll-film">
+    <div ref={rollIt} onWheel={handleWheel} className="roll-film">
       <a.div style={props} className="box">
         {result}
       </a.div>
