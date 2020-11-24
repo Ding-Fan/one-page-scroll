@@ -62,7 +62,12 @@ export default function RollFilm() {
 
   const bind = useGesture(
     {
-      onWheelEnd: ({ direction }) => handleRolling(direction[1]),
+      onWheel: (state) => {
+        console.log("onWheel state", state);
+        if (state.last) {
+          handleRolling(state.direction[1]);
+        }
+      },
       // handle about touch on mobile
       // https://stackoverflow.com/a/22257774
       // chrome on android remote debug
@@ -88,12 +93,12 @@ export default function RollFilm() {
 
       //   hahaTest();
       // },
-    },
-    {
-      wheel: {
-        // threshold: 2,
-      },
     }
+    // {
+    // wheel: {
+    // threshold: 2,
+    // },
+    // }
   );
 
   let result = dataList.map((block, index) => {
