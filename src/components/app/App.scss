@@ -29,7 +29,9 @@ html {
 
   // prevent Chrome mobile pull down refresh
   // https://stackoverflow.com/a/42509310
-  overscroll-behavior-y: contain;
+  // prevent Chrome desktop bouncing
+  // https://developer.mozilla.org/en-US/docs/Web/CSS/overscroll-behavior
+  overscroll-behavior: none;
 }
 
 // https://github.com/reaviz/realayers#-css-variables
@@ -59,7 +61,9 @@ body {
 
   // prevent Chrome mobile pull down refresh
   // https://stackoverflow.com/a/42509310
-  overscroll-behavior-y: contain;
+  // prevent Chrome desktop bouncing
+  // https://developer.mozilla.org/en-US/docs/Web/CSS/overscroll-behavior
+  overscroll-behavior: none;
 }
 
 .container {
