@@ -13,6 +13,7 @@ import Ending from "~/src/components/blocks/ending/Ending";
 import Film from "~/src/components/roll-film/components/film/Film";
 
 export default function RollFilm() {
+  const [touchStartY, setTouchStartY] = useState(0);
   const { rollFilmIndex, dataList } = useValues(logic);
   const { setRollFilmIndex } = useActions(logic);
   const [props, setSpring, stop] = useSpring(() => ({
@@ -53,6 +54,24 @@ export default function RollFilm() {
   const bind = useGesture(
     {
       onWheelStart: ({ direction }) => runSprings(direction[1]),
+      // handle about touch on mobile
+      // https://stackoverflow.com/a/22257774
+      // chrome on android remote debug
+      // https://developers.google.com/web/tools/chrome-devtools/remote-debugging
+      onTouchStart: ({ event }) => {
+        const value = event.changedTouches[0].clientY;
+        setTouchStartY(value);
+        console.log("set touch start y", value);
+      },
+      onTouchEnd: ({ event }) => {
+        const touchEndY = event.changedTouches[0].clientY;
+        console.log("set touch end y", touchEndY);
+        if (touchStartY > touchEndY + 5) {
+          runSprings(1);
+        } else if (touchStartY < touchEndY - 5) {
+          runSprings(-1);
+        }
+      },
     },
     {
       wheel: {

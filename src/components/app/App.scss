@@ -26,6 +26,10 @@ html {
   @include media("<=phone") {
     font-size: 20px;
   }
+
+  // prevent Chrome mobile pull down refresh
+  // https://stackoverflow.com/a/42509310
+  overscroll-behavior-y: contain;
 }
 
 // https://github.com/reaviz/realayers#-css-variables
@@ -51,9 +55,11 @@ body {
     color: $ginnezumi;
   }
 
-
-
   // drawer settings end
+
+  // prevent Chrome mobile pull down refresh
+  // https://stackoverflow.com/a/42509310
+  overscroll-behavior-y: contain;
 }
 
 .container {
