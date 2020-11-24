@@ -20,40 +20,49 @@ export default function RollFilm() {
     transform: `translateY(0vh)`,
   }));
 
-  const runSprings = useCallback(
-    (direction) => {
-      if (
-        (rollFilmIndex > dataList.length - 2 && direction > 0) ||
-        (rollFilmIndex < 1 && direction < 0)
-      ) {
-        // console.log(`rollFilmIndex is ${rollFilmIndex}`);
-        // console.log(`direction is ${direction}`);
-
-        return;
-      }
-
-      let result = rollFilmIndex + direction;
-      if (result < 1) {
-        result = 0;
-      }
-
-      // console.log(`result is ${result}`);
+  const handleRolling = (direction) => {
+    if (
+      (rollFilmIndex > dataList.length - 2 && direction > 0) ||
+      (rollFilmIndex < 1 && direction < 0)
+    ) {
+      // console.log(`rollFilmIndex is ${rollFilmIndex}`);
       // console.log(`direction is ${direction}`);
-      // debugger;
-      setRollFilmIndex(result);
-    },
-    [rollFilmIndex, dataList.length, setRollFilmIndex]
-  );
+
+      return;
+    }
+
+    let result = rollFilmIndex + direction;
+    if (result < 1) {
+      result = 0;
+    }
+    // console.log(`rollFilmIndex is ${rollFilmIndex}`);
+
+    // console.log(`result is ${result}`);
+    // console.log(`direction is ${direction}`);
+    setRollFilmIndex(result);
+  };
 
   useEffect(() => {
+    const keyUpHandler = (event) => {
+      console.log("on key up event", event);
+      if (event.key === "ArrowDown") {
+        handleRolling(1);
+      } else if (event.key === "ArrowUp") {
+        handleRolling(-1);
+      }
+    };
+    document.addEventListener("keyup", keyUpHandler);
+
     setSpring({ transform: `translateY(-${rollFilmIndex * 100}vh)` });
     // console.log(`useEffect rollFilmIndex is ${rollFilmIndex}`);
     // console.log("props", props);
+
+    return () => document.removeEventListener("keyup", keyUpHandler);
   }, [setSpring, rollFilmIndex]);
 
   const bind = useGesture(
     {
-      onWheel: ({ direction }) => runSprings(direction[1]),
+      onWheelEnd: ({ direction }) => handleRolling(direction[1]),
       // handle about touch on mobile
       // https://stackoverflow.com/a/22257774
       // chrome on android remote debug
@@ -67,23 +76,22 @@ export default function RollFilm() {
         const touchEndY = event.changedTouches[0].clientY;
         // console.log("set touch end y", touchEndY);
         if (touchStartY > touchEndY + 5) {
-          runSprings(1);
+          handleRolling(1);
         } else if (touchStartY < touchEndY - 5) {
-          runSprings(-1);
+          handleRolling(-1);
         }
       },
-      onKeyUp: ({ event }) => {
-        if (event.key === "ArrowDown") {
-          runSprings(1);
-        } else if (event.key === "ArrowUp") {
-          runSprings(-1);
-        }
-      },
+      // onKeyUp: (state) => {
+      //   console.log("state", state);
+      //   state.event.preventDefault();
+      //   // keyUpHandler(state.event);
+
+      //   hahaTest();
+      // },
     },
     {
-      domTarget: document,
       wheel: {
-        threshold: 2,
+        // threshold: 2,
       },
     }
   );
@@ -147,8 +155,8 @@ export default function RollFilm() {
   });
 
   return (
-    <div className="roll-film">
-      <a.div {...bind()} style={props} className="box">
+    <div {...bind()} className="roll-film">
+      <a.div style={props} className="box">
         {result}
       </a.div>
     </div>
