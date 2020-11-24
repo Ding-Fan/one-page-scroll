@@ -53,7 +53,7 @@ export default function RollFilm() {
 
   const bind = useGesture(
     {
-      onWheelStart: ({ direction }) => runSprings(direction[1]),
+      onWheel: ({ direction }) => runSprings(direction[1]),
       // handle about touch on mobile
       // https://stackoverflow.com/a/22257774
       // chrome on android remote debug
@@ -72,8 +72,12 @@ export default function RollFilm() {
           runSprings(-1);
         }
       },
-      onKeyUp: (state) => {
-        console.log("key up state", state);
+      onKeyUp: ({ event }) => {
+        if (event.key === "ArrowDown") {
+          runSprings(1);
+        } else if (event.key === "ArrowUp") {
+          runSprings(-1);
+        }
       },
     },
     {
