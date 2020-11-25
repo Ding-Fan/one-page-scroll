@@ -12,6 +12,8 @@ import Ending from "~/src/components/blocks/ending/Ending";
 
 import Film from "~/src/components/roll-film/components/film/Film";
 
+const debounce = require("lodash/debounce");
+
 export default function RollFilm() {
   const [touchStartY, setTouchStartY] = useState(0);
   const { rollFilmIndex, dataList } = useValues(logic);
@@ -20,34 +22,40 @@ export default function RollFilm() {
     transform: `translateY(0vh)`,
   }));
 
-  const handleRolling = (direction) => {
-    if (
-      (rollFilmIndex > dataList.length - 2 && direction > 0) ||
-      (rollFilmIndex < 1 && direction < 0)
-    ) {
-      // console.log(`rollFilmIndex is ${rollFilmIndex}`);
-      // console.log(`direction is ${direction}`);
+  const handleRolling = useCallback(
+    (direction) => {
+      if (
+        (rollFilmIndex > dataList.length - 2 && direction > 0) ||
+        (rollFilmIndex < 1 && direction < 0)
+      ) {
+        // console.log(`rollFilmIndex is ${rollFilmIndex}`);
+        // console.log(`direction is ${direction}`);
 
-      return;
-    }
+        return;
+      }
 
-    let result = rollFilmIndex + direction;
-    if (result < 1) {
-      result = 0;
-    }
+      let result = rollFilmIndex + direction;
+      if (result < 1) {
+        result = 0;
+      }
 
-    setRollFilmIndex(result);
-  };
+      setRollFilmIndex(result);
+    },
+    [rollFilmIndex]
+  );
 
-  const rollIt = useRef(0);
+  // const rollIt = useRef(0);
 
-  const handleWheel = (event) => {
-    if (event.deltaY > 0) {
-      handleRolling(1);
-    } else {
-      handleRolling(-1);
-    }
-  };
+  const handleWheel = useCallback(
+    debounce(({ deltaY }) => {
+      if (deltaY > 0) {
+        handleRolling(1);
+      } else {
+        handleRolling(-1);
+      }
+    }, 180),
+    [rollFilmIndex]
+  );
 
   useEffect(() => {
     const keyUpHandler = (event) => {
@@ -168,7 +176,7 @@ export default function RollFilm() {
   });
 
   return (
-    <div ref={rollIt} onWheel={handleWheel} className="roll-film">
+    <div onWheel={handleWheel} className="roll-film">
       <a.div style={props} className="box">
         {result}
       </a.div>
