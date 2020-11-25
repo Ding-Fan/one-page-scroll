@@ -16,45 +16,47 @@ const debounce = require("lodash/debounce");
 
 export default function RollFilm() {
   const [touchStartY, setTouchStartY] = useState(0);
+  const [moving, setMoving] = useState(false);
   const { rollFilmIndex, dataList } = useValues(logic);
   const { setRollFilmIndex } = useActions(logic);
   const [props, setSpring, stop] = useSpring(() => ({
     transform: `translateY(0vh)`,
+    onRest: () => {
+      setMoving(false);
+    },
   }));
 
-  const handleRolling = useCallback(
-    (direction) => {
-      if (
-        (rollFilmIndex > dataList.length - 2 && direction > 0) ||
-        (rollFilmIndex < 1 && direction < 0)
-      ) {
-        // console.log(`rollFilmIndex is ${rollFilmIndex}`);
-        // console.log(`direction is ${direction}`);
+  const handleRolling = (direction) => {
+    if (
+      (rollFilmIndex > dataList.length - 2 && direction > 0) ||
+      (rollFilmIndex < 1 && direction < 0) ||
+      moving
+    ) {
+      console.log(
+        "🚀 ~ file: RollFilm.js ~ line 36 ~ RollFilm ~ moving",
+        moving
+      );
 
-        return;
-      }
+      return;
+    }
 
-      let result = rollFilmIndex + direction;
-      if (result < 1) {
-        result = 0;
-      }
-
-      setRollFilmIndex(result);
-    },
-    [rollFilmIndex]
-  );
-
-  // const rollIt = useRef(0);
+    let result = rollFilmIndex + direction;
+    if (result < 1) {
+      result = 0;
+    }
+    setMoving(true);
+    setRollFilmIndex(result);
+  };
 
   const handleWheel = useCallback(
-    debounce(({ deltaY }) => {
+    ({ deltaY }) => {
       if (deltaY > 0) {
         handleRolling(1);
       } else {
         handleRolling(-1);
       }
-    }, 180),
-    [rollFilmIndex]
+    },
+    [rollFilmIndex, moving]
   );
 
   useEffect(() => {
@@ -69,20 +71,12 @@ export default function RollFilm() {
     document.addEventListener("keyup", keyUpHandler);
 
     setSpring({ transform: `translateY(-${rollFilmIndex * 100}vh)` });
-    // console.log(`useEffect rollFilmIndex is ${rollFilmIndex}`);
-    // console.log("props", props);
 
     return () => document.removeEventListener("keyup", keyUpHandler);
-  }, [setSpring, rollFilmIndex]);
+  }, [setSpring, rollFilmIndex, moving]);
 
   useGesture(
     {
-      // onWheel: (state) => {
-      //   console.log("onWheel state", state);
-      //   if (state.last) {
-      //     handleRolling(state.direction[1]);
-      //   }
-      // },
       // handle about touch on mobile
       // https://stackoverflow.com/a/22257774
       // chrome on android remote debug
@@ -90,30 +84,18 @@ export default function RollFilm() {
       onTouchStart: ({ event }) => {
         const value = event.changedTouches[0].clientY;
         setTouchStartY(value);
-        // console.log("set touch start y", value);
       },
       onTouchEnd: ({ event }) => {
         const touchEndY = event.changedTouches[0].clientY;
-        // console.log("set touch end y", touchEndY);
         if (touchStartY > touchEndY + 5) {
           handleRolling(1);
         } else if (touchStartY < touchEndY - 5) {
           handleRolling(-1);
         }
       },
-      // onKeyUp: (state) => {
-      //   console.log("state", state);
-      //   state.event.preventDefault();
-      //   // keyUpHandler(state.event);
-
-      //   hahaTest();
-      // },
     },
     {
       domTarget: window,
-      // wheel: {
-      // threshold: 2,
-      // },
     }
   );
 
