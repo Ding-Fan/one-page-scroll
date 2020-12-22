@@ -12,19 +12,20 @@
     margin-right: auto;
 
     @include media(">desktop") {
-      height: 2rem;
+      height: 1rem;
       line-height: 1rem;
       margin-left: 2rem;
     }
-    @include media(">tablet", "<=desktop") {
-      font-size: 50px;
-    }
-    @include media(">phone", "<=tablet") {
-      font-size: 40px;
-    }
-    @include media("<=phone") {
-      font-size: 30px;
-    }
+    // for now, desktop only
+    // @include media(">tablet", "<=desktop") {
+    //   font-size: 50px;
+    // }
+    // @include media(">phone", "<=tablet") {
+    //   font-size: 40px;
+    // }
+    // @include media("<=phone") {
+    //   font-size: 30px;
+    // }
 
     display: flex;
     align-items: center;
