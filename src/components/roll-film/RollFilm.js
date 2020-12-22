@@ -11,6 +11,7 @@ import Reference from "~/src/components/blocks/reference/Reference";
 import Ending from "~/src/components/blocks/ending/Ending";
 
 import Film from "~/src/components/roll-film/components/film/Film";
+import FilmVideo from "~/src/components/roll-film/components/film-video/FilmVideo";
 
 const debounce = require("lodash/debounce");
 
@@ -26,27 +27,25 @@ export default function RollFilm() {
     },
   }));
 
-  const handleRolling = (direction) => {
-    if (
-      (rollFilmIndex > dataList.length - 2 && direction > 0) ||
-      (rollFilmIndex < 1 && direction < 0) ||
-      moving
-    ) {
-      console.log(
-        "🚀 ~ file: RollFilm.js ~ line 36 ~ RollFilm ~ moving",
+  const handleRolling = useCallback(
+    (direction) => {
+      if (
+        (rollFilmIndex > dataList.length - 2 && direction > 0) ||
+        (rollFilmIndex < 1 && direction < 0) ||
         moving
-      );
+      ) {
+        return;
+      }
 
-      return;
-    }
-
-    let result = rollFilmIndex + direction;
-    if (result < 1) {
-      result = 0;
-    }
-    setMoving(true);
-    setRollFilmIndex(result);
-  };
+      let result = rollFilmIndex + direction;
+      if (result < 1) {
+        result = 0;
+      }
+      setMoving(true);
+      setRollFilmIndex(result);
+    },
+    [rollFilmIndex, moving]
+  );
 
   const handleWheel = useCallback(
     ({ deltaY }) => {
@@ -105,9 +104,9 @@ export default function RollFilm() {
     switch (block.type) {
       case "cover":
         showBlock = (
-          <Film key={index} image={block.imgUrl}>
+          <FilmVideo key={index}>
             <Cover index={index} />
-          </Film>
+          </FilmVideo>
         );
         break;
       case "awards":
