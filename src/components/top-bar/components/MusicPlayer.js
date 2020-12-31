@@ -1,24 +1,25 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Howl, Howler } from "howler";
 
-import Languor from "~/src/attachments/musics/22 Languor.mp3";
-import YUKA from "~/src/attachments/musics/05 YUKA.mp3";
-import Phantasmagoria from "~/src/attachments/musics/10 Phantasmagoria.mp3";
+import Fossils from "~/src/attachments/musics/Fossils (From the ＂Ammonite＂ Soundtrack) - Dustin O'Halloran,Volker Bertelmann.mp3";
+import ItsYou from "~/src/attachments/musics/It's You - Altitude Music.mp3";
+import SimplyLove from "~/src/attachments/musics/Simply Love - James Corden.mp3";
 
 let tracks = [
   {
-    title: "22 Languor",
-    file: Languor,
+    title:
+      "Fossils (From the ＂Ammonite＂ Soundtrack) - Dustin O'Halloran,Volker Bertelmann",
+    file: Fossils,
     howl: null,
   },
   {
-    title: "05 YUKA",
-    file: YUKA,
+    title: "It's You - Altitude Music",
+    file: ItsYou,
     howl: null,
   },
   {
-    title: "10 Phantasmagoria",
-    file: Phantasmagoria,
+    title: "Simply Love - James Corden",
+    file: SimplyLove,
     howl: null,
   },
 ];
@@ -170,15 +171,15 @@ export default function MusicPlayer() {
     let result;
     switch (currentState) {
       case "playing":
-        result = <i className='fas fa-volume-mute'></i>;
+        result = <i className="fas fa-volume-mute"></i>;
 
         break;
       case "paused":
-        result = <i className='fas fa-volume-up'></i>;
+        result = <i className="fas fa-volume-up"></i>;
 
         break;
       case "loading":
-        result = <i className='fas fa-spinner'></i>;
+        result = <i className="fas fa-spinner"></i>;
         break;
 
       default:
@@ -213,9 +214,9 @@ export default function MusicPlayer() {
   }
 
   return (
-    <div className='music-player' onClick={changeState}>
-      <div className='state'>{showState()}</div>
-      <div className='title'>{tracks[playing.current].title}</div>
+    <div className="music-player" onClick={changeState}>
+      <div className="state">{showState()}</div>
+      <div className="title">{tracks[playing.current].title}</div>
     </div>
   );
 }
