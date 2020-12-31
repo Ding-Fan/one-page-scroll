@@ -13,19 +13,20 @@ $breakpoints: (
 html {
   background-color: $ding-dark;
   color: $shironeri;
-
-  @include media(">desktop") {
-    font-size: 45px;
-  }
-  @include media(">tablet", "<=desktop") {
-    font-size: 35px;
-  }
-  @include media(">phone", "<=tablet") {
-    font-size: 30px;
-  }
-  @include media("<=phone") {
-    font-size: 20px;
-  }
+  // https://www.sitepoint.com/understanding-and-using-rem-units-in-css/
+  font-size: 62.5%;
+  // @include media(">desktop") {
+  //   font-size: 10px;
+  // }
+  // @include media(">tablet", "<=desktop") {
+  //   font-size: 35px;
+  // }
+  // @include media(">phone", "<=tablet") {
+  //   font-size: 30px;
+  // }
+  // @include media("<=phone") {
+  //   font-size: 20px;
+  // }
 
   // prevent Chrome mobile pull down refresh
   // https://stackoverflow.com/a/42509310
@@ -90,35 +91,35 @@ body {
     @include media(">desktop") {
       display: block;
     }
-    @include media(">tablet", "<=desktop") {
-      display: block;
-    }
-    @include media(">phone", "<=tablet") {
-      display: none;
-    }
-    @include media("<=phone") {
-      display: none;
-    }
+    // @include media(">tablet", "<=desktop") {
+    //   display: block;
+    // }
+    // @include media(">phone", "<=tablet") {
+    //   display: none;
+    // }
+    // @include media("<=phone") {
+    //   display: none;
+    // }
   }
 
-  .mobile-drawer {
-    @include media(">desktop") {
-      display: none;
-    }
-    @include media(">tablet", "<=desktop") {
-      display: none;
-    }
-    @include media(">phone", "<=tablet") {
-      display: block;
-    }
-    @include media("<=phone") {
-      display: block;
-    }
-  }
+  // .mobile-drawer {
+  //   @include media(">desktop") {
+  //     display: none;
+  //   }
+  //   @include media(">tablet", "<=desktop") {
+  //     display: none;
+  //   }
+  //   @include media(">phone", "<=tablet") {
+  //     display: block;
+  //   }
+  //   @include media("<=phone") {
+  //     display: block;
+  //   }
+  // }
 
   .block {
     z-index: 2;
-    padding: 0.8rem;
+    padding: 2rem;
     position: relative;
     min-height: 100vh;
   }

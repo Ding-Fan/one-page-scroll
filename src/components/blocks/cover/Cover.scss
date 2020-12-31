@@ -12,11 +12,13 @@
 
     img {
       transition: all 0.2s;
-      width: 100%;
+      // width: 100%;
       // @include media("<=phone") {
       //   width: auto;
       //   height: 50vh;
       // }
+      height: 33vw;
+      max-height: 40rem;
 
       &.vanish {
         opacity: 0;
@@ -24,37 +26,37 @@
     }
 
     img {
-      @include media(">desktop") {
-        width: 40vw;
-      }
-      @include media(">tablet", "<=desktop") {
-        width: 50vw;
-      }
-      @include media(">phone", "<=tablet") {
-        width: 55vw;
-      }
-      @include media("<=phone") {
-        width: 70vw;
-      }
+      // @include media(">desktop") {
+      //   width: 40vw;
+      // }
+      // @include media(">tablet", "<=desktop") {
+      //   width: 50vw;
+      // }
+      // @include media(">phone", "<=tablet") {
+      //   width: 55vw;
+      // }
+      // @include media("<=phone") {
+      //   width: 70vw;
+      // }
     }
   }
   .description {
     position: absolute;
-    bottom: 0;
+    bottom: 5vh;
     left: 50%;
     transform: translateX(-50%);
 
     @include media(">desktop") {
       height: 5rem;
     }
-    @include media(">tablet", "<=desktop") {
-      height: 3rem;
-    }
-    @include media(">phone", "<=tablet") {
-      height: 4rem;
-    }
-    @include media("<=phone") {
-      height: 5rem;
-    }
+    // @include media(">tablet", "<=desktop") {
+    //   height: 3rem;
+    // }
+    // @include media(">phone", "<=tablet") {
+    //   height: 4rem;
+    // }
+    // @include media("<=phone") {
+    //   height: 5rem;
+    // }
   }
 }

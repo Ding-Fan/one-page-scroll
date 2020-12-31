@@ -3,20 +3,20 @@
 
   @include media(">desktop") {
     margin-right: 2rem;
-    font-size: 0.5rem;
+    font-size: 2rem;
   }
-  @include media(">tablet", "<=desktop") {
-    margin-right: 1.5rem;
-    font-size: 0.5rem;
-  }
-  @include media(">phone", "<=tablet") {
-    margin-right: 1rem;
-    font-size: 0.7rem;
-  }
-  @include media("<=phone") {
-    margin-right: 0.5rem;
-    font-size: 0.8rem;
-  }
+  // @include media(">tablet", "<=desktop") {
+  //   margin-right: 1.5rem;
+  //   font-size: 0.5rem;
+  // }
+  // @include media(">phone", "<=tablet") {
+  //   margin-right: 1rem;
+  //   font-size: 0.7rem;
+  // }
+  // @include media("<=phone") {
+  //   margin-right: 0.5rem;
+  //   font-size: 0.8rem;
+  // }
 
   display: flex;
   align-items: center;
@@ -24,6 +24,6 @@
   }
 
   .title {
-    padding-left: 0.5rem;
+    padding-left: 2rem;
   }
 }

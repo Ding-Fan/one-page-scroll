@@ -8,14 +8,19 @@
   left: 0;
   top: 0;
   width: 100%;
+  font-family: sans-serif;
+  padding: 0.4rem;
   .website-info {
     margin-right: auto;
-
-    @include media(">desktop") {
-      height: 1rem;
-      line-height: 1rem;
-      margin-left: 2rem;
-    }
+    font-size: 1.2rem;
+    // height: 1.4rem;
+    // line-height: 1.4rem;
+    margin-left: 2rem;
+    // @include media(">desktop") {
+    //   height: 4rem;
+    //   line-height: 4rem;
+    //   margin-left: 2rem;
+    // }
     // for now, desktop only
     // @include media(">tablet", "<=desktop") {
     //   font-size: 50px;
@@ -33,6 +38,11 @@
     .logo {
     }
     .description {
+      a {
+        color: #f8c3cd;
+        text-decoration: none;
+        padding-right: 0.5rem;
+      }
     }
   }
 

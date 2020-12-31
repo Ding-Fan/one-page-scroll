@@ -15,7 +15,9 @@ export default function Cover({ index }) {
       <div className="picture">
         <img src={coverPicture} alt="picture" />
       </div>
-      <div className="description">４月６日星期六。 －－那一天我失去了她。</div>
+      <div className="description">
+        基于2020年中国大陆用户的豆瓣标记数据，排名依据评分评价人数和出资源时间等综合考虑（统计截至2021-01-01）
+      </div>
     </div>
   );
 }
