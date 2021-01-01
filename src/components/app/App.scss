@@ -24,13 +24,13 @@ html {
     font-size: 16px;
   }
   @include media(">tablet", "<=desktop") {
-    font-size: 35px;
+    font-size: 14px;
   }
   @include media(">phone", "<=tablet") {
-    font-size: 30px;
+    font-size: 12px;
   }
   @include media("<=phone") {
-    font-size: 20px;
+    font-size: 10px;
   }
 
   // prevent Chrome mobile pull down refresh
