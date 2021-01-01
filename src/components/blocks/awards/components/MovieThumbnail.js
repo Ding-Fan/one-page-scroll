@@ -1,11 +1,14 @@
 import React from "react";
 
-export default function MovieThumbnail({ movie }) {
+export default function MovieThumbnail({ movie, theClassName }) {
   function onClick(newPage) {
     window.open(newPage, "_blank");
   }
   return (
-    <div className="movie-thumbnail" onClick={() => onClick(movie.link)}>
+    <div
+      className={`movie-thumbnail ${theClassName}`}
+      onClick={() => onClick(movie.link)}
+    >
       <div className="ranking">
         <div className="icon"></div>
         <div className="text">{movie.ranking}</div>

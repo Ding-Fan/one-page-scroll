@@ -2,6 +2,7 @@ $breakpoints: (
   phone: 700px,
   tablet: 1000px,
   desktop: 1600px,
+  bigScreen: 2000px,
 );
 
 * {
@@ -14,19 +15,23 @@ html {
   background-color: $ding-dark;
   color: $shironeri;
   // https://www.sitepoint.com/understanding-and-using-rem-units-in-css/
-  font-size: 62.5%;
-  // @include media(">desktop") {
-  //   font-size: 10px;
-  // }
-  // @include media(">tablet", "<=desktop") {
-  //   font-size: 35px;
-  // }
-  // @include media(">phone", "<=tablet") {
-  //   font-size: 30px;
-  // }
-  // @include media("<=phone") {
-  //   font-size: 20px;
-  // }
+  // font-size: 62.5%;
+
+  @include media(">bigScreen") {
+    font-size: 26px;
+  }
+  @include media(">desktop", "<=bigScreen") {
+    font-size: 16px;
+  }
+  @include media(">tablet", "<=desktop") {
+    font-size: 35px;
+  }
+  @include media(">phone", "<=tablet") {
+    font-size: 30px;
+  }
+  @include media("<=phone") {
+    font-size: 20px;
+  }
 
   // prevent Chrome mobile pull down refresh
   // https://stackoverflow.com/a/42509310

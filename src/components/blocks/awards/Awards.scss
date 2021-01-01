@@ -1,12 +1,14 @@
 .block.awards {
   font-family: sans-serif;
-  padding: 6rem 0 0;
+  padding: 6rem 0;
   font-size: 2rem;
+  display: flex;
+  flex-direction: column;
   .rest-movies {
     .box {
       display: flex;
-      justify-content: space-between;
-      padding: 2.4rem calc(10vw - 1rem) 1rem;
+      justify-content: center;
+      // padding: 2.4rem calc(10vw - 1rem) 1rem;
       max-width: 100vw;
       overflow-x: scroll;
 

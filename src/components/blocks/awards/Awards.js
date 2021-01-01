@@ -9,8 +9,16 @@ export default function Awards({
   firstPlace,
 }) {
   function getResult() {
+    // the last thumbnail doesn't have margin right
+    const theLength = rankList.length;
     let result = rankList.map((movie, index) => {
-      return <MovieThumbnail key={index} movie={movie} />;
+      return (
+        <MovieThumbnail
+          key={movie.ranking}
+          movie={movie}
+          theClassName={index < theLength - 1 ? "" : "no-margin-right"}
+        />
+      );
     });
 
     return result;

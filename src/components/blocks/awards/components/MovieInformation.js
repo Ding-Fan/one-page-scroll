@@ -5,6 +5,21 @@ export default function MovieInformation({ position, header, firstPlace }) {
   function onClick(newPage) {
     window.open(newPage, "_blank");
   }
+
+  function getRating() {
+    if (firstPlace.rating) {
+      return (
+        <div className="rating">
+          <Rater total={5} rating={firstPlace.rating / 2} interactive={false} />
+          <div className="score">{firstPlace.rating}</div>
+          {/* <div className="people">{firstPlace.people}人评价</div> */}
+        </div>
+      );
+    } else {
+      return null;
+    }
+  }
+
   return (
     <div className={`movie-information ${position}`}>
       <div className="section-one">
@@ -17,15 +32,7 @@ export default function MovieInformation({ position, header, firstPlace }) {
             <div className="name"> {firstPlace.name} </div>
             <div className="original-name"> {firstPlace.originalName} </div>
           </div>
-          <div className="rating">
-            <Rater
-              total={5}
-              rating={firstPlace.rating / 2}
-              interactive={false}
-            />
-            <div className="score">{firstPlace.rating}</div>
-            {/* <div className="people">{firstPlace.people}人评价</div> */}
-          </div>
+          {getRating()}
           <div className="description">
             <div className="text">{firstPlace.description}</div>
             <div className="source">{firstPlace.source}</div>
