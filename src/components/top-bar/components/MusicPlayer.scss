@@ -3,7 +3,7 @@
 
   @include media(">desktop") {
     margin-right: 2rem;
-    font-size: 2rem;
+    font-size: 1.4rem;
   }
   // @include media(">tablet", "<=desktop") {
   //   margin-right: 1.5rem;
@@ -24,6 +24,11 @@
   }
 
   .title {
+    // https://developer.mozilla.org/en-US/docs/Web/CSS/text-overflow
     padding-left: 2rem;
+    width: 20rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 }
