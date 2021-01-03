@@ -5,6 +5,12 @@ $breakpoints: (
   bigScreen: 2000px,
 );
 
+@font-face {
+  font-family: "Hana Min";
+  src: url("/src/attachments/fonts/RiBenHuaYuanMingChaoTi-2.ttf")
+    format("truetype");
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -124,8 +130,9 @@ body {
 
   .block {
     z-index: 2;
-    padding: 2rem;
+    // padding: 2rem;
     position: relative;
+    // min-height: calc(100vh - 4rem);
     min-height: 100vh;
   }
 }
