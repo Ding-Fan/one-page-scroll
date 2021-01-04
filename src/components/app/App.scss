@@ -68,6 +68,24 @@ body {
     color: $ginnezumi;
   }
 
+  .desktop-drawer {
+    .category-name {
+      font-size: 1.4rem;
+    }
+    // @include media(">desktop") {
+    //   display: block;
+    // }
+    // @include media(">tablet", "<=desktop") {
+    //   display: block;
+    // }
+    // @include media(">phone", "<=tablet") {
+    //   display: none;
+    // }
+    // @include media("<=phone") {
+    //   display: none;
+    // }
+  }
+
   // drawer settings end
 
   // prevent Chrome mobile pull down refresh
@@ -96,21 +114,6 @@ body {
   //     opacity: 1;
   //   }
   // }
-
-  .desktop-drawer {
-    @include media(">desktop") {
-      display: block;
-    }
-    // @include media(">tablet", "<=desktop") {
-    //   display: block;
-    // }
-    // @include media(">phone", "<=tablet") {
-    //   display: none;
-    // }
-    // @include media("<=phone") {
-    //   display: none;
-    // }
-  }
 
   // .mobile-drawer {
   //   @include media(">desktop") {

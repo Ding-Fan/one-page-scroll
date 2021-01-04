@@ -26,9 +26,9 @@ function App() {
           {/* desktop drawer */}
           <Drawer
             showCloseButton={false}
-            position={"top"}
+            position={"end"}
             className="desktop-drawer"
-            size={"50%"}
+            size={"30%"}
           >
             <div
               onClick={() => {
