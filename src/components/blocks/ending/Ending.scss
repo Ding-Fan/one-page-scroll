@@ -4,11 +4,13 @@
   justify-content: center;
   align-items: center;
   .title {
-    margin-bottom: 10vh;
+    margin-bottom: 6vh;
+    img {
+      max-width: 20vw;
+    }
   }
   .text {
     text-align: center;
-    width: 22vw;
     margin-bottom: 5vh;
     font-family: 'FZFangSong', serif;
     font-size: 1.8rem;
@@ -40,6 +42,9 @@
   // }
   .qrcode {
     cursor: pointer;
+    img {
+      max-width: 20vw;
+    }
   }
   .footer {
     display: flex;
@@ -48,11 +53,13 @@
     align-items: center;
     padding-top: 2rem;
     font-size: 0.8rem;
+    color: #9a9a9a;
+    font-family: sans-serif;
 
     a {
-      color: #d3d3d3;
+      color: #9a9a9a;
       text-decoration: none;
-      border-bottom: 1px solid #d3d3d3;
+      border-bottom: 1px solid #9a9a9a;
       margin: 0 0.3rem;
     }
   }

@@ -14,11 +14,11 @@ export default function Ending({ index }) {
         />
       </div>
       <div className="text">
-        <div className="sentence" >再见，2020</div>
-        <div className="sentence" >愿病毒尽快销声匿迹</div>
-        <div className="sentence" >愿酷儿故事不断大放异彩</div>
-        <div className="sentence" >下一段酷儿光影之旅</div>
-        <div className="sentence" >我们将继续共同见证</div>
+        <div className="sentence">再见，2020</div>
+        <div className="sentence">愿病毒尽快销声匿迹</div>
+        <div className="sentence">愿酷儿故事不断大放异彩</div>
+        <div className="sentence">下一段酷儿光影之旅</div>
+        <div className="sentence">我们将继续共同见证</div>
       </div>
       {/* <div className="buttons">
         <Button text={'变得更加完整'} link={'https://www.yinwang.org'} />
@@ -35,7 +35,7 @@ export default function Ending({ index }) {
       <div className="footer">
         <div>
           部分内容引自QAF中文站
-          <a href="https://www.douban.com/note/788691899/">
+          <a href="https://www.douban.com/note/788691899/" target="_blank">
             2020年同志电影年度报告
           </a>
           ，感谢！

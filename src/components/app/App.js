@@ -28,7 +28,7 @@ function App() {
             showCloseButton={false}
             position={'end'}
             className="desktop-drawer"
-            size={'15%'}
+            size={'17%'}
           >
             <div
               onClick={() => {
