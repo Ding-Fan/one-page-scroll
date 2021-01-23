@@ -17,7 +17,7 @@
       //   width: auto;
       //   height: 50vh;
       // }
-      height: 33vw;
+      height: 20vw;
       max-height: 40rem;
 
       &.vanish {
@@ -46,7 +46,7 @@
     left: 50%;
     transform: translateX(-50%);
 
-    @include media(">desktop") {
+    @include media('>desktop') {
       height: 5rem;
     }
     // @include media(">tablet", "<=desktop") {

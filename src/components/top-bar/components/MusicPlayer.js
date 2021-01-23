@@ -1,58 +1,51 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Howl, Howler } from "howler";
+import React, { useState, useEffect, useRef } from 'react'
+import { Howl, Howler } from 'howler'
 
-import Fossils from "~/src/attachments/musics/Fossils (From the ＂Ammonite＂ Soundtrack) - Dustin O'Halloran,Volker Bertelmann.mp3";
-import ItsYou from "~/src/attachments/musics/It's You - Altitude Music.mp3";
-import SimplyLove from "~/src/attachments/musics/Simply Love - James Corden.mp3";
+import ZiYouZhiQiu from '~/src/attachments/musics/自由之丘 - JINBAO.mp4'
+import SpringFever from '~/src/attachments/musics/Spring Fever - Peyman Yazdanian.mp4'
 
 let tracks = [
   {
-    title:
-      "Fossils (From the ＂Ammonite＂ Soundtrack) - Dustin O'Halloran,Volker Bertelmann",
-    file: Fossils,
+    title: 'Spring Fever - Peyman Yazdanian',
+    file: SpringFever,
     howl: null,
   },
   {
-    title: "It's You - Altitude Music",
-    file: ItsYou,
+    title: '自由之丘 - JINBAO',
+    file: ZiYouZhiQiu,
     howl: null,
   },
-  {
-    title: "Simply Love - James Corden",
-    file: SimplyLove,
-    howl: null,
-  },
-];
+]
 
 export default function MusicPlayer() {
-  const playing = useRef(0);
-  const [currentState, setCurrentState] = useState("paused");
+  const playing = useRef(0)
+  const [currentState, setCurrentState] = useState('paused')
 
   /**
    * Skip to the next or previous track.
    * @param  {String} direction 'next' or 'prev'.
    */
   function skip(direction) {
-    console.log("playing", playing.current);
-    let willPlay = 0;
+    console.log('playing', playing.current)
+    let willPlay = 0
     // Get the next track based on the direction of the track.
-    if (direction === "prev") {
+    if (direction === 'prev') {
       if (playing.current <= 0) {
-        willPlay = tracks.length - 1;
+        willPlay = tracks.length - 1
       } else {
-        willPlay = playing.current - 1;
+        willPlay = playing.current - 1
       }
-    } else if (direction === "next") {
+    } else if (direction === 'next') {
       if (playing.current >= tracks.length - 1) {
-        willPlay = 0;
+        willPlay = 0
       } else {
-        willPlay = playing.current + 1;
+        willPlay = playing.current + 1
       }
     }
 
-    console.log("willPlay: ", willPlay);
+    console.log('willPlay: ', willPlay)
 
-    skipTo(willPlay);
+    skipTo(willPlay)
   }
 
   /**
@@ -61,25 +54,25 @@ export default function MusicPlayer() {
   function skipTo(willPlay) {
     // Stop the current track.
     if (tracks[playing.current].howl) {
-      tracks[playing.current].howl.stop();
+      tracks[playing.current].howl.stop()
     }
 
     // Reset progress.
     // progress.style.width = "0%";
 
     // Play the new track.
-    play(willPlay);
+    play(willPlay)
   }
 
   function pause() {
     // Get the Howl we want to manipulate.
-    let sound = tracks[playing.current].howl;
+    let sound = tracks[playing.current].howl
 
     // Puase the sound.
-    sound.pause();
+    sound.pause()
 
     // Show the play button.
-    setCurrentState("paused");
+    setCurrentState('paused')
     // playBtn.style.display = 'block';
     // pauseBtn.style.display = 'none';
   }
@@ -89,34 +82,34 @@ export default function MusicPlayer() {
    * @param  {Number} index Index of the song in the playlist (leave empty to play the first or current).
    */
   function play(willPlay) {
-    loadMusic(willPlay);
-    let sound = tracks[willPlay].howl;
+    loadMusic(willPlay)
+    let sound = tracks[willPlay].howl
     // Begin playing the sound.
-    sound.play();
+    sound.play()
 
     // Update the track display.
     // track.innerHTML = index + 1 + ". " + track.title;
 
     // Show the pause button.
-    if (sound.state() === "loaded") {
+    if (sound.state() === 'loaded') {
       // playBtn.style.display = "none";
       // pauseBtn.style.display = "block";
-      setCurrentState("playing");
+      setCurrentState('playing')
     } else {
       // loading.style.display = "block";
       // playBtn.style.display = "none";
       // pauseBtn.style.display = "none";
-      setCurrentState("loading");
+      setCurrentState('loading')
     }
 
     // Keep track of the index we are currently playing.
     // self.index = index;
-    playing.current = willPlay;
-    console.log("did set playing");
+    playing.current = willPlay
+    console.log('did set playing')
   }
 
   function loadMusic(willPlay) {
-    let track = tracks[willPlay];
+    let track = tracks[willPlay]
 
     // If we already loaded this track, use the current one.
     // Otherwise, setup and load a new Howl.
@@ -141,13 +134,13 @@ export default function MusicPlayer() {
           // wave.container.style.display = "block";
           // bar.style.display = "none";
           // loading.style.display = "none";
-          setCurrentState("playing");
+          setCurrentState('playing')
         },
         onend: function () {
           // Stop the wave animation.
           // wave.container.style.display = "none";
           // bar.style.display = "block";
-          skip("next");
+          skip('next')
         },
         onpause: function () {
           // Stop the wave animation.
@@ -163,53 +156,53 @@ export default function MusicPlayer() {
           // Start upating the progress of the track.
           // requestAnimationFrame(self.step.bind(self));
         },
-      });
+      })
     }
   }
 
   function showState() {
-    let result;
+    let result
     switch (currentState) {
-      case "playing":
-        result = <i className="fas fa-volume-mute"></i>;
+      case 'playing':
+        result = <i className="fas fa-volume-mute"></i>
 
-        break;
-      case "paused":
-        result = <i className="fas fa-volume-up"></i>;
+        break
+      case 'paused':
+        result = <i className="fas fa-volume-up"></i>
 
-        break;
-      case "loading":
-        result = <i className="fas fa-spinner"></i>;
-        break;
+        break
+      case 'loading':
+        result = <i className="fas fa-spinner"></i>
+        break
 
       default:
-        break;
+        break
     }
 
-    return result;
+    return result
   }
 
   function clickPlay() {
-    play(playing.current);
+    play(playing.current)
   }
 
   function clickPause() {
-    pause();
+    pause()
   }
 
   useEffect(() => {
     // play(0);
     // setCurrentState("paused");
 
-    return () => {};
-  }, [playing.current]);
+    return () => {}
+  }, [playing.current])
 
   function changeState() {
     // skip("next");
-    if (currentState === "playing") {
-      clickPause();
-    } else if (currentState === "paused") {
-      clickPlay();
+    if (currentState === 'playing') {
+      clickPause()
+    } else if (currentState === 'paused') {
+      clickPlay()
     }
   }
 
@@ -218,5 +211,5 @@ export default function MusicPlayer() {
       <div className="state">{showState()}</div>
       <div className="title">{tracks[playing.current].title}</div>
     </div>
-  );
+  )
 }

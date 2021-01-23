@@ -1,9 +1,9 @@
 .music-player {
   cursor: pointer;
 
-  @include media(">desktop") {
-    margin-right: 2rem;
-    font-size: 1.4rem;
+  @include media('>desktop') {
+    margin-right: 13vw;
+    font-size: 1.1rem;
   }
   // @include media(">tablet", "<=desktop") {
   //   margin-right: 1.5rem;
@@ -25,7 +25,7 @@
 
   .title {
     // https://developer.mozilla.org/en-US/docs/Web/CSS/text-overflow
-    padding-left: 2rem;
+    padding-left: 1rem;
     width: 20rem;
     text-overflow: ellipsis;
     white-space: nowrap;

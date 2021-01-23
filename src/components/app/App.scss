@@ -6,8 +6,8 @@ $breakpoints: (
 );
 
 @font-face {
-  font-family: "FZFangSong";
-  src: url("/src/attachments/fonts/FZFangSong.ttf") format("truetype");
+  font-family: 'FZFangSong';
+  src: url('/src/attachments/fonts/FZFangSong.ttf') format('truetype');
 }
 
 * {
@@ -22,19 +22,19 @@ html {
   // https://www.sitepoint.com/understanding-and-using-rem-units-in-css/
   // font-size: 62.5%;
 
-  @include media(">bigScreen") {
+  @include media('>bigScreen') {
     font-size: 26px;
   }
-  @include media(">desktop", "<=bigScreen") {
+  @include media('>desktop', '<=bigScreen') {
     font-size: 16px;
   }
-  @include media(">tablet", "<=desktop") {
+  @include media('>tablet', '<=desktop') {
     font-size: 14px;
   }
-  @include media(">phone", "<=tablet") {
+  @include media('>phone', '<=tablet') {
     font-size: 12px;
   }
-  @include media("<=phone") {
+  @include media('<=phone') {
     font-size: 10px;
   }
 
@@ -65,6 +65,8 @@ body {
 
   .close-drawer {
     cursor: pointer;
+    font-size: 1.4rem;
+    padding-bottom: 1rem;
     color: $ginnezumi;
   }
 

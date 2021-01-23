@@ -4,39 +4,56 @@
   justify-content: center;
   align-items: center;
   .title {
+    margin-bottom: 10vh;
   }
   .text {
     text-align: center;
-  }
-  .buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    width: 22vw;
+    margin-bottom: 5vh;
+    font-family: 'FZFangSong', serif;
+    font-size: 1.8rem;
+    letter-spacing: 0.2rem;
 
-    @include media(">desktop") {
-      width: 60vw;
+    .sentence {
+      margin-bottom: 0.6rem;
     }
-    @include media(">tablet", "<=desktop") {
-      font-size: 40px;
-    }
-    @include media(">phone", "<=tablet") {
-      font-size: 30px;
-    }
-    @include media("<=phone") {
-      width: 100%;
-      flex-direction: column;
-      align-items: center;
-    }
+  }
+  // .buttons {
+  //   display: flex;
+  //   flex-wrap: wrap;
+  //   justify-content: space-between;
+
+  //   @include media('>desktop') {
+  //     width: 60vw;
+  //   }
+  //   @include media('>tablet', '<=desktop') {
+  //     font-size: 40px;
+  //   }
+  //   @include media('>phone', '<=tablet') {
+  //     font-size: 30px;
+  //   }
+  //   @include media('<=phone') {
+  //     width: 100%;
+  //     flex-direction: column;
+  //     align-items: center;
+  //   }
+  // }
+  .qrcode {
+    cursor: pointer;
   }
   .footer {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
     padding-top: 2rem;
-    .qr-code {
-      margin-right: 1rem;
-      img {
-        width: 130px;
-      }
+    font-size: 0.8rem;
+
+    a {
+      color: #d3d3d3;
+      text-decoration: none;
+      border-bottom: 1px solid #d3d3d3;
+      margin: 0 0.3rem;
     }
   }
 }

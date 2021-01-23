@@ -1,22 +1,22 @@
-import React from "react";
+import React from 'react'
 
-import "@fortawesome/fontawesome-free/css/all.css";
+import '@fortawesome/fontawesome-free/css/all.css'
 
-import TopBar from "../top-bar/TopBar";
+import TopBar from '../top-bar/TopBar'
 
-import Category from "~/src/components/category/Category";
-import RollFilm from "~/src/components/roll-film/RollFilm";
-import { useDrawer } from "realayers";
+import Category from '~/src/components/category/Category'
+import RollFilm from '~/src/components/roll-film/RollFilm'
+import { useDrawer } from 'realayers'
 
-import { Switch, Route, Link, useParams } from "react-router-dom";
+import { Switch, Route, Link, useParams } from 'react-router-dom'
 
-import logic from "~/src/logic/index";
-import { useActions, useValues } from "kea";
+import logic from '~/src/logic/index'
+import { useActions, useValues } from 'kea'
 
 function App() {
-  let { showing } = useParams();
-  console.log("App here");
-  const { toggleOpen, Drawer } = useDrawer();
+  let { showing } = useParams()
+  console.log('App here')
+  const { toggleOpen, Drawer } = useDrawer()
 
   return (
     <Switch>
@@ -26,13 +26,13 @@ function App() {
           {/* desktop drawer */}
           <Drawer
             showCloseButton={false}
-            position={"end"}
+            position={'end'}
             className="desktop-drawer"
-            size={"30%"}
+            size={'15%'}
           >
             <div
               onClick={() => {
-                toggleOpen();
+                toggleOpen()
               }}
               className="close-drawer"
             >
@@ -64,7 +64,7 @@ function App() {
         </div>
       </Route>
     </Switch>
-  );
+  )
 }
 
-export default App;
+export default App
