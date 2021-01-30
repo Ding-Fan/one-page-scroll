@@ -118,7 +118,8 @@ export default function MusicPlayer() {
         src: [track.file],
         html5: true, // Force to HTML5 so that the audio can stream in (best for large files).
         volume: 0.5,
-        // rate: 4.0,
+        // autoplay: true,
+        // rate: 9.0,
         onplay: function () {
           // Display the duration.
           // duration.innerHTML = self.formatTime(Math.round(sound.duration()));
@@ -191,10 +192,14 @@ export default function MusicPlayer() {
   }
 
   useEffect(() => {
-    // play(0);
-    // setCurrentState("paused");
+    const flag = setTimeout(() => {
+      play(0)
+      setCurrentState('playing')
+    }, 4000)
 
-    return () => {}
+    return () => {
+      clearTimeout(flag)
+    }
   }, [playing.current])
 
   function changeState() {

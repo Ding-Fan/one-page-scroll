@@ -4,14 +4,14 @@
   justify-content: center;
   align-items: center;
   .title {
-    margin-bottom: 6vh;
     img {
       max-width: 20vw;
     }
+    flex: 2;
+    margin-top: 10vh;
   }
   .text {
     text-align: center;
-    margin-bottom: 5vh;
     font-family: 'FZFangSong', serif;
     font-size: 1.8rem;
     letter-spacing: 0.2rem;
@@ -19,6 +19,7 @@
     .sentence {
       margin-bottom: 0.6rem;
     }
+    flex: 1;
   }
   // .buttons {
   //   display: flex;
@@ -40,27 +41,31 @@
   //     align-items: center;
   //   }
   // }
-  .qrcode {
-    cursor: pointer;
-    img {
-      max-width: 20vw;
-    }
-  }
-  .footer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: 2rem;
-    font-size: 0.8rem;
-    color: #9a9a9a;
-    font-family: sans-serif;
+  .qrcode-and-footer {
+    flex: 1;
 
-    a {
+    .qrcode {
+      cursor: pointer;
+      img {
+        max-width: 20vw;
+      }
+    }
+    .footer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-top: 2rem;
+      font-size: 0.8rem;
       color: #9a9a9a;
-      text-decoration: none;
-      border-bottom: 1px solid #9a9a9a;
-      margin: 0 0.3rem;
+      font-family: sans-serif;
+
+      a {
+        color: #9a9a9a;
+        text-decoration: none;
+        border-bottom: 1px solid #9a9a9a;
+        margin: 0 0.3rem;
+      }
     }
   }
 }

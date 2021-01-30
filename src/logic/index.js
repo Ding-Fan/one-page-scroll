@@ -552,7 +552,7 @@ const logic = kea({
         {
           type: 'ending',
           header: '结束',
-          imgUrl: require('~/src/attachments/images/fiona-bowden-XvLRRaArUQg-unsplash.jpg'),
+          imgUrl: require('~/src/attachments/images/封底背景.jpg'),
         },
       ],
       {},

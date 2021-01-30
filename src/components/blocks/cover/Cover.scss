@@ -17,15 +17,12 @@
       //   width: auto;
       //   height: 50vh;
       // }
-      height: 20vw;
+      height: 16vw;
       max-height: 40rem;
 
       &.vanish {
         opacity: 0;
       }
-    }
-
-    img {
       // @include media(">desktop") {
       //   width: 40vw;
       // }
