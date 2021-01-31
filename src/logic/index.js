@@ -24,6 +24,7 @@ const logic = kea({
           position: 'left',
           imgUrl: require('~/src/attachments/images/最佳影片.jpg'),
           header: '2020年最佳影片',
+          headerColor: '#9A7E5E99',
           firstPlace: {
             name: '燃烧女子的肖像',
             originalName: 'Portrait de la jeune fille en feu',
@@ -116,19 +117,11 @@ const logic = kea({
           sourceLink: 'https://movie.douban.com/subject/33420285/',
         },
         {
-          type: 'shot',
-          header: '再见，妈妈1',
-          imgUrl: '',
-          showImage: require('/src/attachments/images/台词2.jpg'),
-          quote: '你把你的爱人介绍给你的家人，这怎么能是错呢？',
-          source: '——《再见，妈妈》',
-          sourceLink: 'https://movie.douban.com/subject/34608294/',
-        },
-        {
           type: 'awards',
           position: 'right',
           imgUrl: require('~/src/attachments/images/最佳剧集.jpg'),
           header: '2020年最佳剧集',
+          headerColor: '#e87a9099',
           firstPlace: {
             name: '以你的心诠释我的爱',
             originalName: 'แปลรักฉันด้วยใจเธอ',
@@ -212,10 +205,20 @@ const logic = kea({
           ],
         },
         {
+          type: 'shot',
+          header: '再见，妈妈1',
+          imgUrl: '',
+          showImage: require('/src/attachments/images/台词2.jpg'),
+          quote: '你把你的爱人介绍给你的家人，这怎么能是错呢？',
+          source: '——《再见，妈妈》',
+          sourceLink: 'https://movie.douban.com/subject/34608294/',
+        },
+        {
           type: 'awards',
           position: 'left',
           imgUrl: require('~/src/attachments/images/冷门佳片.jpg'),
           header: '2020年冷门佳片',
+          headerColor: '#2fa1eb99',
           firstPlace: {
             name: '金丝雀',
             originalName: 'Kanarie',
@@ -268,6 +271,7 @@ const logic = kea({
           position: 'right',
           imgUrl: require('~/src/attachments/images/最佳短片.jpg'),
           header: '2020年最佳短片',
+          headerColor: '#439D8E99',
           firstPlace: {
             name: '胆量计划',
             originalName: 'The Dare Project',
@@ -320,6 +324,7 @@ const logic = kea({
           position: 'left',
           imgUrl: require('~/src/attachments/images/最佳纪实类.jpg'),
           header: '2020年最佳纪实类',
+          headerColor: '#e87a9099',
           firstPlace: {
             name: '隐秘的爱',
             originalName: 'A Secret Love',
@@ -372,6 +377,7 @@ const logic = kea({
           position: 'right',
           imgUrl: require('~/src/attachments/images/最佳动画类.jpg'),
           header: '2020年最佳动画类',
+          headerColor: '#5f5f5f99',
           firstPlace: {
             name: '鸣鸟不飞：乌云密布',
             originalName: '囀る鳥は羽ばたかない',
@@ -424,6 +430,7 @@ const logic = kea({
           position: 'left',
           imgUrl: require('~/src/attachments/images/最佳平权.jpg'),
           header: '2020年最佳平权',
+          headerColor: '#439D8E99',
           firstPlace: {
             name: '美国夫人',
             originalName: 'Mrs. America',
@@ -476,6 +483,7 @@ const logic = kea({
           position: 'right',
           imgUrl: require('~/src/attachments/images/2021最受期待.jpg'),
           header: '2021年最受期待',
+          headerColor: '#FF965799',
           firstPlace: {
             name: '性爱自修室 第三季',
             originalName: 'Sex Education Season 3',

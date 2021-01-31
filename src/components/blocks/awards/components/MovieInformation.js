@@ -1,9 +1,14 @@
-import React from "react";
-import Rater from "react-rater";
+import React from 'react'
+import Rater from 'react-rater'
 
-export default function MovieInformation({ position, header, firstPlace }) {
+export default function MovieInformation({
+  position,
+  header,
+  headerColor,
+  firstPlace,
+}) {
   function onClick(newPage) {
-    window.open(newPage, "_blank");
+    window.open(newPage, '_blank')
   }
 
   function getRating() {
@@ -14,15 +19,15 @@ export default function MovieInformation({ position, header, firstPlace }) {
           <div className="score">{firstPlace.rating}</div>
           {/* <div className="people">{firstPlace.people}人评价</div> */}
         </div>
-      );
+      )
     } else {
-      return null;
+      return null
     }
   }
 
   return (
     <div className={`movie-information ${position}`}>
-      <div className="section-one">
+      <div className="section-one" style={{ backgroundColor: headerColor }}>
         <h2>{header}</h2>
       </div>
       <div className="section-two">
@@ -40,5 +45,5 @@ export default function MovieInformation({ position, header, firstPlace }) {
         </div>
       </div>
     </div>
-  );
+  )
 }

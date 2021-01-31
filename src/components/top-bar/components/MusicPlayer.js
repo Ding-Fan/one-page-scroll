@@ -191,16 +191,17 @@ export default function MusicPlayer() {
     pause()
   }
 
-  useEffect(() => {
-    const flag = setTimeout(() => {
-      play(0)
-      setCurrentState('playing')
-    }, 4000)
+  // useEffect(() => {
+  // // alert: need to check current state
+  //   const flag = setTimeout(() => {
+  //     play(0)
+  //     setCurrentState('playing')
+  //   }, 4000)
 
-    return () => {
-      clearTimeout(flag)
-    }
-  }, [playing.current])
+  //   return () => {
+  //     clearTimeout(flag)
+  //   }
+  // }, [playing.current])
 
   function changeState() {
     // skip("next");
