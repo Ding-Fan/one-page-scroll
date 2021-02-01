@@ -4,6 +4,7 @@
     position: absolute;
     z-index: -1;
     top: 0;
+    filter: brightness(0.4);
   }
   @media (min-aspect-ratio: 16/9) {
     .video {
