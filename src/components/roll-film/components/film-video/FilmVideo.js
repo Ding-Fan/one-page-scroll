@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 export default function FilmVideo({ children }) {
   // console.log(image);
@@ -7,10 +7,10 @@ export default function FilmVideo({ children }) {
       {children}
       <video className="video" autoPlay muted loop>
         <source
-          src={require("/src/attachments/videos/the-video.mp4")}
+          src={require('/src/attachments/videos/首屏混剪800k.mp4')}
           type="video/mp4"
         />
       </video>
     </div>
-  );
+  )
 }
