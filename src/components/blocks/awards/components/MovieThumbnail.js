@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react'
 
 export default function MovieThumbnail({ movie, theClassName }) {
   function onClick(newPage) {
-    window.open(newPage, "_blank");
+    window.open(newPage, '_blank')
   }
   return (
     <div
@@ -20,10 +20,14 @@ export default function MovieThumbnail({ movie, theClassName }) {
         <div className="information">
           <div className="title">
             {movie.name}
-            {movie.rating ? <span className="rating">{movie.rating}</span> : ""}
+            {movie.rating ? (
+              <span className="rating">{movie.rating.toFixed(1)}</span>
+            ) : (
+              ''
+            )}
           </div>
         </div>
       </div>
     </div>
-  );
+  )
 }

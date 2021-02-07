@@ -109,7 +109,7 @@ const logic = kea({
         },
         {
           type: 'shot',
-          header: '真心半解1',
+          header: '真心半解',
           imgUrl: '',
           showImage: require('/src/attachments/images/台词.1.jpg'),
           quote: '引力是物质对孤独的反应。',
@@ -213,7 +213,7 @@ const logic = kea({
         },
         {
           type: 'shot',
-          header: '再见，妈妈1',
+          header: '再见，妈妈',
           imgUrl: '',
           showImage: require('/src/attachments/images/台词.2.jpg'),
           quote: '你把你的爱人介绍给你的家人，这怎么能是错呢？',
@@ -275,7 +275,7 @@ const logic = kea({
         },
         {
           type: 'shot',
-          header: '燃烧女子的肖像1',
+          header: '燃烧女子的肖像',
           imgUrl: '',
           showImage: require('/src/attachments/images/台词.3.jpg'),
           quote: '他选择了欧律狄刻的回忆，这不是作为爱人的选择，而是作为诗人。',
@@ -337,7 +337,7 @@ const logic = kea({
         },
         {
           type: 'shot',
-          header: '性爱自修室 第二季1',
+          header: '性爱自修室 第二季',
           imgUrl: '',
           showImage: require('/src/attachments/images/台词.4.jpg'),
           quote: '性并不能使我们完整，你又怎会因此破碎？',
@@ -399,7 +399,7 @@ const logic = kea({
         },
         {
           type: 'shot',
-          header: '致允熙1',
+          header: '致允熙',
           imgUrl: '',
           showImage: require('/src/attachments/images/台词.5.jpg'),
           quote: '我也会梦见你。',
@@ -461,7 +461,7 @@ const logic = kea({
         },
         {
           type: 'shot',
-          header: '爱你，维克托1',
+          header: '爱你，维克托',
           imgUrl: '',
           showImage: require('/src/attachments/images/台词.6.jpg'),
           quote: '因为你不是个陌生人，你是我们当中的一员。',
@@ -523,7 +523,7 @@ const logic = kea({
         },
         {
           type: 'shot',
-          header: '真雄起1',
+          header: '真雄起',
           imgUrl: '',
           showImage: require('/src/attachments/images/台词.7.jpg'),
           quote: '我们会一直奔跑，为了我们的爱。',
@@ -611,7 +611,7 @@ const logic = kea({
         // },
         {
           type: 'ending',
-          header: '结束',
+          header: '封底',
           imgUrl: require('~/src/attachments/images/封底背景.jpg'),
         },
       ],
